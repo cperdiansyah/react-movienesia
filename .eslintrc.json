@@ -45,6 +45,10 @@
             }
         ],
         "react/require-default-props": "off",
-        "react/destructuring-assignment": "off"
+        "react/destructuring-assignment": "off",
+        "no-shadow": "off",
+        "no-unused-vars": "warn",
+        "no-console": "off",
+        "react/prop-types": "off"
     }
 }
