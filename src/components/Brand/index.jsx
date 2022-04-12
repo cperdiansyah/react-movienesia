@@ -11,12 +11,8 @@ export default function Brand(props) {
   if (isFull) {
     className.push('brand-full');
     return (
-      <div className="brand-wrapper">
-        <Button
-          type="link"
-          href="/"
-          className={`flex items-center ${className.join(' ')}`}
-        >
+      <div className={`brand-wrapper ${className.join(' ')}`}>
+        <Button type="link" href="/" className="flex items-center">
           <img src={logo} alt="brand-icon" className="h-11 w-11" />
           <h3 className="font-semibold text-lg">
             <span className="text-primary">Movie</span>

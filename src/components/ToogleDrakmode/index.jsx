@@ -24,8 +24,8 @@ export default function ToogleDarkmode() {
         text-gray-500 hover:bg-gray-500 hover:text-gray-300 active:bg-gray-300 
         border-2 border-gray-500
 
-        dark:bg-gray-700 dark:text-gray-300 dark:focus:ring-gray-700 dark:active:bg-gray-300
-        dark:border-gray-700
+        dark:text-gray-300  dark:active:bg-gray-300
+        dark:border-wite
         
         "
         onClick={props.toggleTheme}
