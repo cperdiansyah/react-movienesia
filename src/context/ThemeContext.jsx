@@ -1,24 +1,21 @@
 /* eslint-disable react/prop-types */
-import React, { createContext, useMemo } from 'react';
+import React, { createContext, useMemo, useState } from 'react';
 
-export default function ThemeContext() {
-  const ThemeContext = createContext();
+function ThemeContext() {
+  const Theme = createContext();
 
   function ThemeProvider(props) {
     const { children } = props;
-    const [theme, setTheme] = React.useState('light');
+    const [theme, setTheme] = useState('light');
 
     const toggleTheme = () => {
       setTheme(theme === 'light' ? 'dark' : 'light');
     };
-    const themeContext = useMemo(() => ({ theme, toggleTheme }), [theme]);
+    const themeState = useMemo(() => ({ theme, toggleTheme }), [theme]);
 
-    return (
-      <ThemeContext.Provider value={themeContext}>
-        {children}
-      </ThemeContext.Provider>
-    );
+    return <Theme.Provider value={themeState}>{children}</Theme.Provider>;
   }
 
-  return { ThemeContext, ThemeProvider };
+  return { Theme, ThemeProvider };
 }
+export default ThemeContext();

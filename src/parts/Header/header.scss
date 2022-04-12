@@ -1,0 +1,9 @@
+header {
+  nav {
+    a.nav-link {
+      &.active {
+        @apply text-dark;
+      }
+    }
+  }
+}

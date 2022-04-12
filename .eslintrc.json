@@ -29,21 +29,7 @@
             "error",
             "all"
         ],
-        "lines-around-comment": [
-            "error",
-            {
-                "beforeBlockComment": true,
-                "afterBlockComment": true,
-                "beforeLineComment": true,
-                "afterLineComment": true,
-                "allowBlockStart": true,
-                "allowBlockEnd": true,
-                "allowObjectStart": true,
-                "allowObjectEnd": true,
-                "allowArrayStart": true,
-                "allowArrayEnd": true
-            }
-        ],
+        "lines-around-comment": "off",
         "react/require-default-props": "off",
         "react/destructuring-assignment": "off",
         "no-shadow": "off",
