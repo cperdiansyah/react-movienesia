@@ -18,18 +18,20 @@ export default function Header(props) {
     >
       <div className="container flex flex-row justify-between items-center">
         <Brand isFull />
-        <nav>
-          {navLinks.map((link, index) => (
-            <NavLink
-              key={index}
-              to={link === 'Home' ? '/' : `/${link.toLowerCase()}`}
-              className="nav-link font-medium text-lg text-slate-400 ml-3 "
-            >
-              {link}
-            </NavLink>
-          ))}
-        </nav>
-        <ToogleDarkmode />
+        <div className="nav-wrap flex items-center">
+          <nav className="mr-5">
+            {navLinks.map((link, index) => (
+              <NavLink
+                key={index}
+                to={link === 'Home' ? '/' : `/${link.toLowerCase()}`}
+                className="nav-link font-medium text-lg text-slate-400 ml-3 "
+              >
+                {link}
+              </NavLink>
+            ))}
+          </nav>
+          <ToogleDarkmode />
+        </div>
       </div>
     </header>
   );
