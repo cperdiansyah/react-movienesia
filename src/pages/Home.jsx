@@ -1,21 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-// import Helmet from 'react-helmet';
-
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import Hero from '../parts/Hero';
 
-export default function Home(props) {
+export default function Home() {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Home</title>
+        <title>Home | MovieNesia</title>
       </Helmet>
-      <div className="bg-dark text-white">{props.children}</div>
+      <Hero />
     </HelmetProvider>
   );
 }
-
-Home.propTypes = {
-  children: PropTypes.node,
-};

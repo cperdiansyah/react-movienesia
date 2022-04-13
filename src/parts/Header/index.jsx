@@ -12,7 +12,7 @@ export default function Header(props) {
 
   return (
     <header
-      className={`bg-transparent absolute top-0 left-0 w-full flex items-center z-10 py-6 dark:bg-dark ${className.join(
+      className={`bg-transparent absolute top-0 left-0 w-full flex items-center z-10 py-6  ${className.join(
         ' '
       )}`}
     >

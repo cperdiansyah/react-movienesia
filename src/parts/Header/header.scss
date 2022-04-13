@@ -4,7 +4,7 @@ header {
   nav {
     a.nav-link {
       &.active {
-        @apply text-dark dark:text-white;
+        @apply text-dark dark:text-white font-semibold;
       }
     }
   }

@@ -1,0 +1,10 @@
+.welcome-sign {
+  &::after {
+    content: '';
+    position: absolute;
+    margin-left: 6rem;
+    width: 80%;
+    height: 2px;
+    @apply bg-dark opacity-50;
+  }
+}

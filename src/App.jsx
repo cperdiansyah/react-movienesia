@@ -1,11 +1,12 @@
 /* eslint-disable import/no-unresolved */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Header from './parts/Header';
 import Footer from './parts/Footer';
 import ThemeContext from './context/ThemeContext';
+import './App.css';
 
 const { ThemeProvider } = ThemeContext;
 function App() {
@@ -27,7 +28,7 @@ function App() {
   };
   return (
     <ThemeProvider>
-      <div className="App">
+      <div className="App dark:bg-dark">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
