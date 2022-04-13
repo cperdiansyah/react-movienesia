@@ -1,3 +1,6 @@
 .App {
   @apply transition duration-[400ms] ease-in-out;
 }
+body {
+  scroll-behavior: smooth;
+}

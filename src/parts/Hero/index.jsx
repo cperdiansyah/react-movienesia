@@ -6,17 +6,17 @@ import './hero.scss';
 
 export default function Hero() {
   return (
-    <section className="pt-12 relative h-[700px]">
+    <section className="hero-section pt-7 relative ">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="w-full md:w-1/2 relative">
             <h3 className="welcome-sign text-lg text-gray-500 dark:text-gray-200 font-medium flex items-center ">
               Welcome
             </h3>
-            <h4 className="text-5xl font-bold leading-tight mt-3 text-slate-800 dark:text-slate-200">
+            <h4 className="text-5xl font-bold leading-tight mt-3 text-text_primary dark:text-text_primary_dark">
               Explore millions of movies and TV shows
             </h4>
-            <p className="text-lg mt-5 mb-10 text-slate-500 dark:text-slate-200 ">
+            <p className="text-lg mt-5 mb-10 text-text_secondary dark:text-text_secondary_dark ">
               You can still enjoy the latest movies and other movies online and
               at a lower price
             </p>

@@ -20,6 +20,7 @@ export default function ToogleDarkmode() {
         type="button"
         className="
          transition duration-400 ease-in-out rounded-lg text-sm p-2.5
+         shadow-md
 
         text-gray-500 hover:bg-gray-500 hover:text-gray-300 active:bg-gray-300 
         border-2 border-gray-500

@@ -20,7 +20,7 @@ export default function Brand(props) {
               className="h-11 w-11"
               loading="lazy"
             />
-            <h3 className="font-semibold text-lg">
+            <h3 className="font-semibold text-xl">
               <span className="text-primary">Movie</span>
               <span className="text-secondary">Nesia</span>
             </h3>
