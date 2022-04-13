@@ -8,7 +8,7 @@ import './header.scss';
 export default function Header(props) {
   const className = [props.className];
 
-  const navLinks = ['Home', 'Genre', 'Favorites', 'About'];
+  const navLinks = ['Home', 'Categories', 'Favorites', 'About'];
 
   return (
     <header
@@ -17,14 +17,14 @@ export default function Header(props) {
       )}`}
     >
       <div className="container flex flex-row justify-between items-center">
-        <Brand isFull className="w-1/2" />
+        <Brand isFull className="w-1/2 " />
         <div className="nav-wrap flex items-center w-1/2 justify-end">
           <nav className="mr-5">
             {navLinks.map((link, index) => (
               <NavLink
                 key={index}
                 to={link === 'Home' ? '/' : `/${link.toLowerCase()}`}
-                className="nav-link font-medium text-lg text-slate-400 ml-3 dark:text-slate-200"
+                className="nav-link font-medium text-lg text-slate-400 ml-3 dark:text-slate-200 inline-block px-3 py-3"
               >
                 {link}
               </NavLink>

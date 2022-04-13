@@ -12,17 +12,19 @@ export default function Brand(props) {
     className.push('brand-full');
     return (
       <div className={`brand-wrapper ${className.join(' ')}`}>
-        <Button type="link" href="/" className="flex items-center">
-          <img
-            src={logo}
-            alt="brand-icon"
-            className="h-11 w-11"
-            loading="lazy"
-          />
-          <h3 className="font-semibold text-lg">
-            <span className="text-primary">Movie</span>
-            <span className="text-secondary">Nesia</span>
-          </h3>
+        <Button type="link" href="/" className="inline-block">
+          <div className="brand-wrapper flex items-center">
+            <img
+              src={logo}
+              alt="brand-icon"
+              className="h-11 w-11"
+              loading="lazy"
+            />
+            <h3 className="font-semibold text-lg">
+              <span className="text-primary">Movie</span>
+              <span className="text-secondary">Nesia</span>
+            </h3>
+          </div>
         </Button>
       </div>
     );

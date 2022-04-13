@@ -10,22 +10,24 @@ export default function Hero() {
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="w-full md:w-1/2 relative">
-            <h3 className="welcome-sign text-lg text-slate-800 dark:text-slate-200 font-medium flex items-center ">
+            <h3 className="welcome-sign text-lg text-gray-500 dark:text-gray-200 font-medium flex items-center ">
               Welcome
             </h3>
             <h4 className="text-5xl font-bold leading-tight mt-3 text-slate-800 dark:text-slate-200">
               Explore millions of movies and TV shows
             </h4>
-            <p className="text-lg mt-5 mb-8 dark:text-slate-200 ">
+            <p className="text-lg mt-5 mb-10 text-slate-500 dark:text-slate-200 ">
               You can still enjoy the latest movies and other movies online and
               at a lower price
             </p>
             <Button
               type="link"
               href="#discover"
-              className="px-3 py-4 bg-primary text-white rounded-lg shadow-lg text-lg font-semibold"
+              className="px-3 py-4 rounded-md shadow-lg text-lg font-semibold 
+              bg-primary text-white hover:bg-indigo-400 active:bg-indigo-600
+              dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-100 dark:active:bg-slate-300"
             >
-              Get Started
+              Discover Now
             </Button>
           </div>
           <div className="w-full md:w-1/2">
