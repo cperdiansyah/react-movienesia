@@ -10,13 +10,13 @@ export default function Hero() {
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="w-full md:w-1/2 relative">
-            <h3 className="welcome-sign text-lg text-slate-800 font-medium flex items-center ">
+            <h3 className="welcome-sign text-lg text-slate-800 dark:text-slate-200 font-medium flex items-center ">
               Welcome
             </h3>
-            <h4 className="text-5xl font-bold leading-tight mt-3 text-slate-800">
+            <h4 className="text-5xl font-bold leading-tight mt-3 text-slate-800 dark:text-slate-200">
               Explore millions of movies and TV shows
             </h4>
-            <p className="text-lg mt-5 mb-8 ">
+            <p className="text-lg mt-5 mb-8 dark:text-slate-200 ">
               You can still enjoy the latest movies and other movies online and
               at a lower price
             </p>
@@ -29,7 +29,7 @@ export default function Hero() {
             </Button>
           </div>
           <div className="w-full md:w-1/2">
-            <img className="w-full " src={backdrop} alt="Hero" />
+            <img className="w-full " src={backdrop} alt="Hero" loading="lazy" />
           </div>
         </div>
       </div>

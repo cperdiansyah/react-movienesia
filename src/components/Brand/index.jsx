@@ -13,7 +13,12 @@ export default function Brand(props) {
     return (
       <div className={`brand-wrapper ${className.join(' ')}`}>
         <Button type="link" href="/" className="flex items-center">
-          <img src={logo} alt="brand-icon" className="h-11 w-11" />
+          <img
+            src={logo}
+            alt="brand-icon"
+            className="h-11 w-11"
+            loading="lazy"
+          />
           <h3 className="font-semibold text-lg">
             <span className="text-primary">Movie</span>
             <span className="text-secondary">Nesia</span>
