@@ -144,7 +144,11 @@ export default function Categories() {
             Molestiae obcaecati molestias quae assumenda?
           </p>
         </div>
-        <div className="categories-wrapper">
+        <div
+          className="categories-wrapper w-full mt-10 
+          grid grid-cols-2 gap-5 md:grid-cols-3
+         lg:grid-cols-4 "
+        >
           {categories
             .sort((a, b) => b.total - a.total)
             .slice(0, 8)
