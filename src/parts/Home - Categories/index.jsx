@@ -1,5 +1,6 @@
 import React from 'react';
 import env from 'react-dotenv';
+import Button from '../../components/Button';
 
 import CardCategory from '../../components/Card Categories';
 
@@ -123,16 +124,25 @@ export default function Categories() {
   ];
 
   return (
-    <section className="hero-categories-section pt-10">
+    <section className="hero-categories-section py-10">
       <div className="container">
         <div className="title-wrapper flex items-center">
-          <h3
-            className="title font-bold text-5xl  md:w-1/2 leading-snug
+          <div className=" md:w-1/2 ">
+            <h3
+              className="title font-bold text-5xl  leading-snug
           text-text_primary
           dark:text-text_primary_dark"
-          >
-            Choose The Type Of Film You Liked
-          </h3>
+            >
+              Choose The Type Of Film You Liked
+            </h3>
+            <Button
+              type="link"
+              href="/categories"
+              className="underline block w-fit ml-auto mr-14 text-lg text-text_secondary dark:text-text_secondary_dark"
+            >
+              See more categories
+            </Button>
+          </div>
           <p
             className="md:w-1/2 text-base
            text-text_secondary

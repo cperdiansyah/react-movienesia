@@ -3,9 +3,9 @@ import Button from '../Button';
 
 export default function CardCategory({ category }) {
   return (
-    <div className="flex items-center p-5 bg-slate-200 shadow-lg rounded-xl mr-4 mb-4 justify-around">
+    <div className="flex items-center p-5 bg-slate-200 backdrop-blur-sm  shadow-lg rounded-xl mr-4 mb-4 justify-around">
       <div className="icon-wrapper md:w-1/3 ">
-        <div className="icon-wrapper__icon w-fit bg-primary rounded-xl flex items-center shadow-md justify-center py-3 px-4">
+        <div className="icon-wrapper__icon w-fit bg-primary  rounded-xl flex items-center shadow-md justify-center py-3 px-4">
           <span className="material-icons-outlined text-white text-3xl ">
             {category.avatar}
           </span>
@@ -22,7 +22,7 @@ export default function CardCategory({ category }) {
 
         <Button
           type="link"
-          href={`/genres/${category.id}`}
+          href={`/categories/${category.id}`}
           className="underline text-base text-text_primary "
         >
           View More
