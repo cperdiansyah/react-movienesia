@@ -1,12 +1,9 @@
 import React from 'react';
-import env from 'react-dotenv';
 import Button from '../../components/Button';
 
 import CardCategory from '../../components/Card Categories';
 
-export default function Categories() {
-  // const [categories, setCategories] = useState([]);
-
+export default function HeroCategories() {
   const categories = [
     {
       id: 28,
