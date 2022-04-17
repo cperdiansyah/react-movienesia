@@ -28,7 +28,7 @@ function App() {
   };
   return (
     <ThemeProvider>
-      <div className="App dark:bg-dark">
+      <div className="App  dark:bg-dark">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
