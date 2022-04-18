@@ -3,21 +3,21 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Hero from '../parts/Hero';
 import HeroMovies from '../parts/Hero - Movies';
 import HeroCategories from '../parts/Home - Categories';
-import EntertainmentContext from '../context/MovieContext';
+import ContentHomeContext from '../context/MovieContext';
 
-const { EntertainmentProvider } = EntertainmentContext;
+const { ContentProvider } = ContentHomeContext;
 
 export default function Home() {
   return (
     <HelmetProvider>
-      <EntertainmentProvider>
+      <ContentProvider>
         <Helmet>
           <title>Home | MovieNesia</title>
         </Helmet>
         <Hero />
         <HeroCategories />
         <HeroMovies />
-      </EntertainmentProvider>
+      </ContentProvider>
     </HelmetProvider>
   );
 }

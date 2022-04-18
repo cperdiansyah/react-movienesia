@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import propTypes from 'prop-types';
+import './Button.scss';
 
 export default function Button(props) {
   const className = [props.className];
@@ -57,10 +58,11 @@ export default function Button(props) {
 
   return (
     <button
-      className={className.join(' ')}
+      className={`button-components ${className.join(' ')}`}
       style={props.style}
-      onClick={onClick}
+      onClick={props.onClick}
       type="button"
+      value={props.value}
     >
       {props.children}
     </button>

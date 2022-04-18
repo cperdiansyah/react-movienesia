@@ -1,31 +1,33 @@
 import React, { createContext, useCallback, useMemo, useState } from 'react';
 
-function EntertainmentContext() {
-  const Entertainment = createContext();
+function ContentHomeContext() {
+  const Content = createContext();
 
-  function EntertainmentProvider(props) {
-    const [entertainment, setEntertainment] = useState('movies');
+  function ContentProvider(props) {
+    const [content, setContent] = useState({ type: 'movie', filter: 'all' });
 
-    const changeEntertainment = (e) => setEntertainment(e.target.value);
+    const changeContentType = (e) =>
+      setContent({ ...content, type: e.target.value });
+    console.log(content);
 
-    const entertainmentState = useMemo(
-      () => ({ entertainment, changeEntertainment }),
-      [entertainment]
+    const contentState = useMemo(
+      () => ({ content, changeContentType, setContent }),
+      [content]
     );
 
     const memoizeComponent = useCallback(
       () => (
-        <Entertainment.Provider value={entertainmentState}>
+        <Content.Provider value={contentState}>
           {props.children}
-        </Entertainment.Provider>
+        </Content.Provider>
       ),
-      []
+      [content]
     );
 
     return memoizeComponent();
   }
 
-  return { Entertainment, EntertainmentProvider };
+  return { Content, ContentProvider };
 }
 
-export default EntertainmentContext();
+export default ContentHomeContext();
