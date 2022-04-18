@@ -1,13 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import ApiConfig from '../../api/api-config';
 import Button from '../../components/Button';
+import CardMovie from '../../components/Card Movie';
 import ContentHomeContext from '../../context/MovieContext';
 import './hero.scss';
 
+const { BASE_URL, API_KEY } = ApiConfig;
 const { Content } = ContentHomeContext;
 
 export default function HeroMovies() {
   const props = useContext(Content);
-  // console.log(props);
+
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `${BASE_URL}/${props.content.type}/popular?api_key=${API_KEY}&language=en-US&page=1`
+      )
+      .then(({ data }) => setMovies(data.results.slice(0, 9)));
+  }, [props.content.type]);
 
   const activeButtonHandler = (e) => {
     const parentElement = e.target.parentNode;
@@ -52,37 +65,33 @@ export default function HeroMovies() {
             </Button>
           </div>
 
-          <div className="sort-content-wrapper">
-            <div className="filter-content-wrapper">
-              <Button
-                className="active"
-                value="all"
-                onClick={filterContentHandler}
-              >
-                All
-              </Button>
-              <Button
-                className=""
-                value="rating"
-                onClick={filterContentHandler}
-              >
-                Rating
-              </Button>
-              <Button className="" value="vote" onClick={filterContentHandler}>
-                Vote
-              </Button>
-              <Button
-                className=""
-                value="latest"
-                onClick={filterContentHandler}
-              >
-                Latest
-              </Button>
-              <Button className="" value="genre" onClick={filterContentHandler}>
-                Genre
-              </Button>
-            </div>
+          <div className="filter-content-wrapper">
+            <Button
+              className="active"
+              value="all"
+              onClick={filterContentHandler}
+            >
+              All
+            </Button>
+            <Button className="" value="rating" onClick={filterContentHandler}>
+              Rating
+            </Button>
+            <Button className="" value="vote" onClick={filterContentHandler}>
+              Vote
+            </Button>
+            <Button className="" value="latest" onClick={filterContentHandler}>
+              Latest
+            </Button>
+            <Button className="" value="genre" onClick={filterContentHandler}>
+              Genre
+            </Button>
           </div>
+        </div>
+
+        <div className="movie-wrapper flex flex-wrap flex-row my-5 pt-5">
+          {movies.map((movie) => (
+            <CardMovie key={movie.id} movie={movie} className="mr-5 mb-5" />
+          ))}
         </div>
       </div>
     </section>

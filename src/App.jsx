@@ -10,7 +10,7 @@ import './App.css';
 
 const { ThemeProvider } = ThemeContext;
 function App() {
-  window.onscroll = function () {
+  window.onscroll = () => {
     const header = document.querySelector('header');
     const fixedNav = header.offsetTop;
     // const toTop = document.querySelector('#to-top');
@@ -26,9 +26,10 @@ function App() {
       // }
     }
   };
+
   return (
     <ThemeProvider>
-      <div className="App  dark:bg-dark">
+      <div className="App bg-slate-100 dark:bg-dark">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
