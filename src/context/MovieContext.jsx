@@ -8,10 +8,14 @@ function ContentHomeContext() {
 
     const changeContentType = (e) =>
       setContent({ ...content, type: e.target.value });
-    console.log(content);
+
+    const changeContentFilter = (e) =>
+      setContent({ ...content, filter: e.target.value });
+
+    // console.log(content);
 
     const contentState = useMemo(
-      () => ({ content, changeContentType, setContent }),
+      () => ({ content, changeContentType, changeContentFilter }),
       [content]
     );
 

@@ -8,13 +8,20 @@ const { Content } = ContentHomeContext;
 export default function HeroMovies() {
   const props = useContext(Content);
   // console.log(props);
+
+  const activeButtonHandler = (e) => {
+    const parentElement = e.target.parentNode;
+    parentElement.querySelector('button.active').classList.remove('active');
+    e.target.classList.add('active');
+  };
+
   const typeContentHandler = (e) => {
-    document
-      .querySelector('.type-content-wrapper button.active')
-      .classList.remove('active');
+    activeButtonHandler(e);
     props.changeContentType(e);
-    const element = e.target;
-    element.classList.add('active');
+  };
+  const filterContentHandler = (e) => {
+    activeButtonHandler(e);
+    props.changeContentFilter(e);
   };
   return (
     <section className="hero-movies py-12">
@@ -47,11 +54,33 @@ export default function HeroMovies() {
 
           <div className="sort-content-wrapper">
             <div className="filter-content-wrapper">
-              <Button className="active">All</Button>
-              <Button className="">Rating</Button>
-              <Button className="">Vote</Button>
-              <Button className="">Latest</Button>
-              <Button className="">Genre</Button>
+              <Button
+                className="active"
+                value="all"
+                onClick={filterContentHandler}
+              >
+                All
+              </Button>
+              <Button
+                className=""
+                value="rating"
+                onClick={filterContentHandler}
+              >
+                Rating
+              </Button>
+              <Button className="" value="vote" onClick={filterContentHandler}>
+                Vote
+              </Button>
+              <Button
+                className=""
+                value="latest"
+                onClick={filterContentHandler}
+              >
+                Latest
+              </Button>
+              <Button className="" value="genre" onClick={filterContentHandler}>
+                Genre
+              </Button>
             </div>
           </div>
         </div>
