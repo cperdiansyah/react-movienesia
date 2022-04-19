@@ -1,6 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
+import slugify from 'react-slugify';
 
 import apiConfig from '../../api/api-config';
 
@@ -12,9 +13,10 @@ export default function CardMovie({ movie, className, type }) {
   const classname = [className];
 
   const title = type === 'movie' ? movie.original_title : movie.original_name;
+  const slug = slugify(title);
   return (
     <div className={`card-movie ${classname.join(' ')}`}>
-      <Link to={`/${type}/${movie.id}`}>
+      <Link to={`/${type}/${slug}&id=${movie.id}`}>
         <div className="image-wrapper">
           <img
             src={`${IMAGE_BASE_URL}${movie.poster_path}`}
@@ -24,7 +26,7 @@ export default function CardMovie({ movie, className, type }) {
         </div>
         <div className="content-wrapper px-1">
           <div className="info-wrapper my-3 flex justify-between items-center">
-            <div className="rate-wrapper flex items-center border border-yellow-400 bg-yellow-50  py-1 px-2 pr-3 rounded-lg">
+            <div className="rate-wrapper flex items-center border border-yellow-400 bg-yellow-50  py-1 px-2 pr-3 rounded-lg ">
               <span className="material-icons-outlined text-yellow-400 mr-1">
                 star
               </span>

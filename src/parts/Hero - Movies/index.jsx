@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+
 import ApiConfig from '../../api/api-config';
 import Button from '../../components/Button';
 import CardMovie from '../../components/Card Movie';
@@ -14,15 +15,14 @@ export default function HeroMovies() {
 
   const [movies, setMovies] = useState([]);
 
-  /* Side effect for consume API */
-
+  /* Side effect for default consume API */
   useEffect(() => {
     axios
       .get(
-        `${BASE_URL}/${props.content.type}/popular?api_key=${API_KEY}&language=en-US&page=1`
+        `${BASE_URL}/${props.content.type}/${props.content.filter}?api_key=${API_KEY}&language=en-US&page=1`
       )
       .then(({ data }) => setMovies(data.results.slice(0, 12)));
-  }, [props.content.type]);
+  }, [props.content.type, props.content.filter]);
 
   const activeButtonHandler = (e) => {
     const parentElement = e.target.parentNode;
@@ -36,20 +36,49 @@ export default function HeroMovies() {
   };
   const filterContentHandler = (e) => {
     activeButtonHandler(e);
+    // console.log(e.target.value);
     props.changeContentFilter(e);
   };
+
+  let discoverTitle;
+
+  switch (props.content.filter) {
+    case 'popular':
+      discoverTitle = ' The Most Popular';
+      break;
+    case 'now_playing':
+    case 'airing_today':
+      discoverTitle = 'Now Playing';
+      break;
+
+    case 'upcoming':
+    case 'on_the_air':
+      discoverTitle = "Here's Upcoming";
+      break;
+
+    case 'top_rated':
+      discoverTitle = 'Top Rated';
+      break;
+    default:
+      discoverTitle = '';
+  }
   return (
     <section className="hero-movies py-12" id="discover">
       <div className="container">
         <div className="title-wrapper">
           <h1
             className="capitalize text-5xl font-bold text-text_primary leading-tight 
-          dark:text-text_primary_dark"
+          dark:text-text_primary_dark "
           >
-            The Most Popular
-            <span className="block ">
-              {props.content.type === 'movie' ? 'movies' : 'Tv shows'} To Watch
-              In {new Date().getFullYear()}{' '}
+            {discoverTitle}
+            {props.content.type === 'movie' ? ' movies' : ' Tv shows'}
+            <span className="block">
+              To Watch
+              <span>
+                {props.content.filter === 'top_rated'
+                  ? ' All The Time'
+                  : ` In ${new Date().getFullYear()}`}
+              </span>
             </span>
           </h1>
         </div>
@@ -70,22 +99,29 @@ export default function HeroMovies() {
           <div className="filter-content-wrapper">
             <Button
               className="active"
-              value="all"
+              value={
+                props.content.type === 'movie' ? 'now_playing' : 'airing_today'
+              }
               onClick={filterContentHandler}
             >
-              All
+              Now Playing
             </Button>
-            <Button className="" value="rating" onClick={filterContentHandler}>
+            <Button
+              className=""
+              value={props.content.type === 'movie' ? 'upcoming' : 'on_the_air'}
+              onClick={filterContentHandler}
+            >
+              Upcoming
+            </Button>
+            <Button className="" value="popular" onClick={filterContentHandler}>
+              Popular
+            </Button>
+            <Button
+              className=""
+              value="top_rated"
+              onClick={filterContentHandler}
+            >
               Rating
-            </Button>
-            <Button className="" value="vote" onClick={filterContentHandler}>
-              Vote
-            </Button>
-            <Button className="" value="latest" onClick={filterContentHandler}>
-              Latest
-            </Button>
-            <Button className="" value="genre" onClick={filterContentHandler}>
-              Genre
             </Button>
           </div>
         </div>

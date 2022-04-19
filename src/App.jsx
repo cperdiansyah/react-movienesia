@@ -40,7 +40,6 @@ function App() {
           <Route path="categories" element={<Categories />} />
           <Route path="categories/:id" element={<CategoriesLists />} />
 
-          <Route path="movie" element={<MovieDetail />} />
           <Route path="movie/:id" element={<MovieDetail />} />
         </Routes>
         <Footer />
