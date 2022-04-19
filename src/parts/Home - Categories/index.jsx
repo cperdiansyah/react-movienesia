@@ -4,6 +4,7 @@ import Button from '../../components/Button';
 import CardCategory from '../../components/Card Categories';
 
 export default function HeroCategories() {
+  // console.log('Categories');
   const categories = [
     {
       id: 28,

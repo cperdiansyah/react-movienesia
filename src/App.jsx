@@ -11,6 +11,7 @@ import ThemeContext from './context/ThemeContext';
 import MovieDetail from './pages/MovieDetail';
 import Categories from './pages/Categories';
 import CategoriesLists from './pages/CategoriesLists';
+import ScrollToTop from './utils/ScrollToTop';
 
 const { ThemeProvider } = ThemeContext;
 function App() {
@@ -35,6 +36,7 @@ function App() {
     <ThemeProvider>
       <div className="App  bg-slate-100 dark:bg-dark">
         <Header />
+        <ScrollToTop>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="categories" element={<Categories />} />
@@ -42,6 +44,8 @@ function App() {
 
           <Route path="movie/:id" element={<MovieDetail />} />
         </Routes>
+        </ScrollToTop>
+
         <Footer />
       </div>
     </ThemeProvider>

@@ -16,7 +16,7 @@ export default function CardMovie({ movie, className, type }) {
   const slug = slugify(title);
   return (
     <div className={`card-movie ${classname.join(' ')}`}>
-      <Link to={`/${type}/${slug}&id=${movie.id}`}>
+      <Link to={`/${type}/${slug}?id=${movie.id}`}>
         <div className="image-wrapper">
           <img
             src={`${IMAGE_BASE_URL}${movie.poster_path}`}

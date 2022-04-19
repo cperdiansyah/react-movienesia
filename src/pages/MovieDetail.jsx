@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
+import useQuery from '../utils/useQuery';
 
 export default function MovieDetail() {
-  return (
-    <div>MovieDetail</div>
-  )
+  const query = useQuery();
+
+  const id = query.get('id');
+
+  console.log(id);
+
+  return <div>MovieDetail</div>;
 }

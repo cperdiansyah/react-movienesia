@@ -6,7 +6,7 @@ import HeroCategories from '../parts/Home - Categories';
 import ContentHomeContext from '../context/MovieContext';
 
 const { ContentProvider } = ContentHomeContext;
-
+// console.log('Home');
 export default function Home() {
   return (
     <HelmetProvider>

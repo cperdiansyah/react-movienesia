@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
 import ApiConfig from '../../api/api-config';
@@ -22,6 +22,8 @@ export default function HeroMovies() {
         `${BASE_URL}/${props.content.type}/${props.content.filter}?api_key=${API_KEY}&language=en-US&page=1`
       )
       .then(({ data }) => setMovies(data.results.slice(0, 12)));
+
+    // console.log(props.content);
   }, [props.content.type, props.content.filter]);
 
   const activeButtonHandler = (e) => {
@@ -34,9 +36,9 @@ export default function HeroMovies() {
     activeButtonHandler(e);
     props.changeContentType(e);
   };
+
   const filterContentHandler = (e) => {
     activeButtonHandler(e);
-    // console.log(e.target.value);
     props.changeContentFilter(e);
   };
 

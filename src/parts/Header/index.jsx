@@ -24,6 +24,7 @@ export default function Header(props) {
               <NavLink
                 key={index}
                 to={link === 'Home' ? '/' : `/${link.toLowerCase()}`}
+                
                 className="nav-link font-medium text-lg text-slate-500 ml-3 dark:text-slate-200 inline-block px-3 py-3"
               >
                 {link}
