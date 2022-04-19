@@ -1,42 +1,50 @@
 import React from 'react';
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
+
+import apiConfig from '../../api/api-config';
 
 import './cardMovie.scss';
 
-export default function CardMovie({ movie, className }) {
+const { IMAGE_BASE_URL } = apiConfig;
+
+export default function CardMovie({ movie, className, type }) {
   const classname = [className];
 
+  const title = type === 'movie' ? movie.original_title : movie.original_name;
   return (
     <div className={`card-movie ${classname.join(' ')}`}>
-      <div className="image-wrapper">
-        <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.original_title}
-          loading="lazy"
-        />
-      </div>
-      <div className="content-wrapper px-1">
-        <div className="info-wrapper my-3 flex justify-between items-center">
-          <div className="rate-wrapper flex items-center border border-yellow-400 bg-yellow-50  py-1 px-2 pr-3 rounded-lg">
-            <span className="material-icons-outlined text-yellow-400 mr-1">
-              star
+      <Link to={`/${type}/${movie.id}`}>
+        <div className="image-wrapper">
+          <img
+            src={`${IMAGE_BASE_URL}${movie.poster_path}`}
+            alt={title}
+            loading="lazy"
+          />
+        </div>
+        <div className="content-wrapper px-1">
+          <div className="info-wrapper my-3 flex justify-between items-center">
+            <div className="rate-wrapper flex items-center border border-yellow-400 bg-yellow-50  py-1 px-2 pr-3 rounded-lg">
+              <span className="material-icons-outlined text-yellow-400 mr-1">
+                star
+              </span>
+              <span className="rate font-medium">{movie.vote_average}</span>
+            </div>
+
+            <span className="text-sm text-text_secondary">
+              <Moment format="MMM DD, YYYY">{movie.release_date}</Moment>
             </span>
-            <span className="rate font-medium">{movie.vote_average}</span>
           </div>
 
-          <span className="text-sm text-text_secondary">
-            <Moment format="MMM DD, YYYY">{movie.release_date}</Moment>
-          </span>
+          <h2 className="title text-lg font-semibold">
+            {title}
+            <span className="year">
+              {' '}
+              (<Moment format="YYYY">{movie.release_date}</Moment>)
+            </span>
+          </h2>
         </div>
-
-        <h2 className="title text-lg font-semibold">
-          {movie.original_title}
-          <span className="year">
-            {' '}
-            (<Moment format="YYYY">{movie.release_date}</Moment>)
-          </span>
-        </h2>
-      </div>
+      </Link>
     </div>
   );
 }

@@ -23,6 +23,7 @@ export default function Hero() {
             <Button
               type="link"
               href="#discover"
+              isExternal
               className="px-3 py-4 rounded-md shadow-lg text-lg font-semibold 
               bg-primary text-white hover:bg-indigo-400 active:bg-indigo-600
               dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-100 dark:active:bg-slate-300"

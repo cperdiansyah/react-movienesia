@@ -14,12 +14,14 @@ export default function HeroMovies() {
 
   const [movies, setMovies] = useState([]);
 
+  /* Side effect for consume API */
+
   useEffect(() => {
     axios
       .get(
         `${BASE_URL}/${props.content.type}/popular?api_key=${API_KEY}&language=en-US&page=1`
       )
-      .then(({ data }) => setMovies(data.results.slice(0, 9)));
+      .then(({ data }) => setMovies(data.results.slice(0, 12)));
   }, [props.content.type]);
 
   const activeButtonHandler = (e) => {
@@ -37,7 +39,7 @@ export default function HeroMovies() {
     props.changeContentFilter(e);
   };
   return (
-    <section className="hero-movies py-12">
+    <section className="hero-movies py-12" id="discover">
       <div className="container">
         <div className="title-wrapper">
           <h1
@@ -88,9 +90,14 @@ export default function HeroMovies() {
           </div>
         </div>
 
-        <div className="movie-wrapper flex flex-wrap flex-row my-5 pt-5">
+        <div className="movie-wrapper grid grid-cols-6 gap-4 w-full mt-10">
           {movies.map((movie) => (
-            <CardMovie key={movie.id} movie={movie} className="mr-5 mb-5" />
+            <CardMovie
+              key={movie.id}
+              movie={movie}
+              type={props.content.type}
+              className="w-full"
+            />
           ))}
         </div>
       </div>
