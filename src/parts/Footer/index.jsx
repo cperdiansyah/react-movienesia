@@ -101,7 +101,7 @@ export default function Footer() {
     },
   ];
   return (
-    <footer className="py-12 bg-gray-800">
+    <footer className="py-12 z-10 bg-gray-800">
       <div className="container">
         <div className=" w-full flex footer-content pb-10 pt-5  px-7">
           {footerContent.map((item, index) => (

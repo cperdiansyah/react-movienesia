@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
-import slugify from 'react-slugify';
+import slugify from '../../helpers/slugify';
 
 import apiConfig from '../../api/api-config';
 
@@ -12,7 +12,7 @@ const { IMAGE_BASE_URL } = apiConfig;
 export default function CardMovie({ movie, className, type }) {
   const classname = [className];
 
-  const title = type === 'movie' ? movie.original_title : movie.original_name;
+  const title = type === 'movie' ? movie.original_title : movie.name;
   const slug = slugify(title);
   return (
     <div className={`card-movie ${classname.join(' ')}`}>

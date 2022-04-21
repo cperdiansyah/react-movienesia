@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import Hero from '../parts/Hero';
-import HeroMovies from '../parts/Hero - Movies';
+import Hero from '../parts/Home - Hero';
+import HeroMovies from '../parts/Home - Movies';
 import HeroCategories from '../parts/Home - Categories';
 import ContentHomeContext from '../context/MovieContext';
 

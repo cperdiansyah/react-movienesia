@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
 import ApiConfig from '../../api/api-config';
@@ -14,14 +14,23 @@ export default function HeroMovies() {
   const props = useContext(Content);
 
   const [movies, setMovies] = useState([]);
+  const [trending, setTrending] = useState(false);
 
   /* Side effect for default consume API */
   useEffect(() => {
-    axios
-      .get(
-        `${BASE_URL}/${props.content.type}/${props.content.filter}?api_key=${API_KEY}&language=en-US&page=1`
-      )
-      .then(({ data }) => setMovies(data.results.slice(0, 12)));
+    if (props.content.filter === 'trending') {
+      axios
+        .get(
+          `${BASE_URL}/trending/${props.content.type}/week?api_key=${API_KEY}`
+        )
+        .then(({ data }) => setMovies(data.results.slice(0, 12)));
+    } else {
+      axios
+        .get(
+          `${BASE_URL}/${props.content.type}/${props.content.filter}?api_key=${API_KEY}&language=en-US&page=1`
+        )
+        .then(({ data }) => setMovies(data.results.slice(0, 12)));
+    }
 
     // console.log(props.content);
   }, [props.content.type, props.content.filter]);
@@ -42,24 +51,52 @@ export default function HeroMovies() {
     props.changeContentFilter(e);
   };
 
-  let discoverTitle;
+  const filterTrendingHandler = (e) => {
+    activeButtonHandler(e);
+    props.changeContentFilter(e);
+    setTrending(!trending);
+  };
 
+  let discoverTitle;
+  let timingTitle;
   switch (props.content.filter) {
     case 'popular':
-      discoverTitle = ' The Most Popular';
+      discoverTitle = `The Most Popular ${
+        props.content.type === 'movie' ? ' movies' : ' Tv shows'
+      } `;
+      timingTitle = `To Watch In ${new Date().getFullYear()}`;
       break;
     case 'now_playing':
     case 'airing_today':
-      discoverTitle = 'Now Playing';
+      discoverTitle = `Now Playing ${
+        props.content.type === 'movie' ? ' movies' : ' Tv shows'
+      }`;
+      timingTitle = `To Watch In ${new Date().getFullYear()}`;
+
       break;
 
     case 'upcoming':
     case 'on_the_air':
-      discoverTitle = "Here's Upcoming";
+      discoverTitle = `Here's Upcoming ${
+        props.content.type === 'movie' ? ' movies' : ' Tv shows'
+      }`;
+      timingTitle = `To Watch In ${new Date().getFullYear()}`;
+
       break;
 
     case 'top_rated':
-      discoverTitle = 'Top Rated';
+      discoverTitle = `Top Rated ${
+        props.content.type === 'movie' ? ' movies' : ' Tv shows'
+      } `;
+      timingTitle = `To Watch All The Time`;
+
+      break;
+    case 'trending':
+      discoverTitle = `Trending ${
+        props.content.type === 'movie' ? ' movies' : ' Tv shows'
+      } `;
+      timingTitle = `To Watch In This Week`;
+
       break;
     default:
       discoverTitle = '';
@@ -73,15 +110,7 @@ export default function HeroMovies() {
           dark:text-text_primary_dark "
           >
             {discoverTitle}
-            {props.content.type === 'movie' ? ' movies' : ' Tv shows'}
-            <span className="block">
-              To Watch
-              <span>
-                {props.content.filter === 'top_rated'
-                  ? ' All The Time'
-                  : ` In ${new Date().getFullYear()}`}
-              </span>
-            </span>
+            <span className="block">{timingTitle}</span>
           </h1>
         </div>
         <div className="button-wrapper mt-5 flex justify-between">
@@ -107,6 +136,13 @@ export default function HeroMovies() {
               onClick={filterContentHandler}
             >
               Now Playing
+            </Button>
+            <Button
+              className=""
+              value="trending"
+              onClick={filterTrendingHandler}
+            >
+              Trending
             </Button>
             <Button
               className=""

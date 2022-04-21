@@ -1,12 +1,17 @@
 import React from 'react';
-import useQuery from '../utils/useQuery';
+import { HelmetProvider } from 'react-helmet-async';
+
+import MovieDetailContext from '../context/MovieDetailContext';
+import MovieDetailsMain from '../parts/Movie Detail - Main';
+
+const { MovieDetailProvider } = MovieDetailContext;
 
 export default function MovieDetail() {
-  const query = useQuery();
-
-  const id = query.get('id');
-
-  console.log(id);
-
-  return <div>MovieDetail</div>;
+  return (
+    <HelmetProvider>
+      <MovieDetailProvider>
+        <MovieDetailsMain  />
+      </MovieDetailProvider>
+    </HelmetProvider>
+  );
 }
