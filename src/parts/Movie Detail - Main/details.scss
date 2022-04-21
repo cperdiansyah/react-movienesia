@@ -1,7 +1,4 @@
 .main-details-section {
-  & * {
-    @apply transition duration-300 ease-in-out;
-  }
   .backdrop-wrap {
     img,
     .background-overlay {
@@ -9,12 +6,22 @@
     }
 
     .background-overlay {
-      @apply bg-black opacity-50;
+      @apply bg-gradient-to-b from-transparent to-slate-100 dark:to-dark opacity-50;
     }
   }
+
   .movie-details-wrap {
     img {
       @apply h-80 object-cover object-center;
+    }
+  }
+
+  .movie-details-content-link {
+    .button-icon {
+      @apply p-2 mr-3 rounded-full flex justify-center items-center bg-dark bg-opacity-80 border-2 border-transparent text-white hover:bg-opacity-100 
+      dark:bg-transparent dark:border-slate-200 dark:text-text_primary_dark dark:hover:border-slate-100 dark:hover:bg-slate-100 dark:hover:text-dark 
+      dark:active:border-slate-300 
+      transition duration-300 ease-in-out;
     }
   }
 }

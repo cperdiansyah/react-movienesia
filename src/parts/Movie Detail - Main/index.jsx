@@ -52,7 +52,7 @@ export default function MovieDetailMain() {
   };
 
   return (
-    <section className="main-details-section pt-52 pb-10 relative h-full min-h-[700px]">
+    <section className="main-details-section pt-52 pb-10 relative h-full min-h-[650px]">
       {!isloading && (
         <div className="container">
           {/* Backdrop Image Section */}
@@ -87,7 +87,7 @@ export default function MovieDetailMain() {
                       value={value}
                       maxValue={10}
                       text={`${value * 10}%`}
-                      className="bg-dark rounded-full text-xl"
+                      className="bg-dark rounded-full shadow-lg text-xl"
                       styles={buildStyles({
                         // Text size
                         textSize: '1.5rem',
@@ -100,10 +100,11 @@ export default function MovieDetailMain() {
               </div>
             </div>
 
+            {/* Content Movie Details */}
             <div className="movie-details-content">
               <div className="movie-details-content-wrap">
                 <div className="movie-details-content-header">
-                  <h1 className="text-4xl font-bold text-white">
+                  <h1 className="text-4xl font-bold text-dark drop-shadow-md dark:text-text_primary_dark">
                     {`${detail.title} (${detail.release_date.split('-')[0]})`}
                   </h1>
                 </div>
@@ -111,8 +112,11 @@ export default function MovieDetailMain() {
                   {detail.genres.map((genre, index) => (
                     <Button
                       type="link"
-                      className="genre-button px-3 py-2 mr-2 rounded-xl shadow-lg text-base font-medium border-2 bg-transparent
-                    border-slate-200 text-text_primary_dark hover:border-slate-100 active:border-slate-300"
+                      className="genre-button px-3 py-2 mr-2 rounded-xl shadow-lg text-base font-medium  border-2 bg-slate-800 border-slate-800 bg-opacity-80
+                      border-transparent text-white hover:bg-opacity-100
+                      dark:bg-transparent dark:border-slate-200 dark:text-text_primary_dark dark:hover:border-slate-100 dark:active:border-slate-300
+                      transition duration-300 ease-in-out
+                    "
                       href={`/categories/${genre.id}`}
                       key={index}
                     >
@@ -124,20 +128,33 @@ export default function MovieDetailMain() {
                   <Button
                     type="link"
                     isExternal
-                    className="px-4 pr-5 py-3  rounded-full shadow-lg font-medium 
-                    bg-secondary text-white hover:bg-sky-400 active:bg-sky-600 
-                    w-fit flex items-center mr-5"
+                    className="px-4 pr-5 py-3 rounded-full shadow-lg font-medium 
+                    bg-secondary text-white hover:bg-sky-400 active:bg-sky-600
+                    dark:bg-slate-200 dark:text-dark
+                    w-fit flex items-center mr-5  transition duration-300 ease-in-out"
                     href={`/movie/${detail.id}`}
                   >
                     <span className="material-icons">play_arrow</span>
                     Watch Trailer
                   </Button>
+
+                  {/* TODO Add indexed db for favorites movie */}
                   <Button
                     isFull
-                    className="p-2 mr-3 rounded-full flex justify-center items-center border-2 text-slate-300 border-slate-300 hover:border-primary hover:text-white hover:-translate-y-0"
+                    className="button-icon"
                     onClick={favoriteButtonHandler}
                   >
                     <span className="material-icons">favorite_border</span>
+                  </Button>
+
+                  <Button
+                    type="link"
+                    isExternal
+                    href={detail.homepage ? detail.homepage : '#'}
+                    target="_blank"
+                    className="button-icon"
+                  >
+                    <span className="material-icons-outlined">link</span>
                   </Button>
                 </div>
               </div>

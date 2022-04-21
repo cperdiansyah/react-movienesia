@@ -7,7 +7,7 @@ function ThemeContext() {
   function ThemeProvider(props) {
     const { children } = props;
     const [theme, setTheme] = useState(
-      localStorage.getItem('color-theme') || 'light'
+      localStorage.getItem('color-theme') || 'dark'
     );
 
     const toggleTheme = () => {
