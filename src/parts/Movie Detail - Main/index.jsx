@@ -1,8 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
 
-import Dexie from 'dexie';
-import { useLiveQuery } from 'dexie-react-hooks';
-
 import axios from 'axios';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -19,16 +16,19 @@ import MovieDetailContext from '../../context/MovieDetailContext';
 import Button from '../../components/Button';
 import db from '../../helpers/db';
 
+import ThemeContext from '../../context/ThemeContext';
+
 const { BASE_URL, API_KEY, IMAGE_BASE_URL_ORIGINAL, IMAGE_BASE_URL } =
   apiConfig;
 const { MovieDetails } = MovieDetailContext;
+const { Theme } = ThemeContext;
 
 export default function MovieDetailMain() {
   const query = useQuery();
   const id = query.get('id');
   const props = useContext(MovieDetails);
+  const { theme } = useContext(Theme);
   const { detail } = props;
-
   const [isloading, setLoading] = useState(true);
   const [isFavorites, setIsFavorites] = useState();
 
@@ -51,6 +51,18 @@ export default function MovieDetailMain() {
     getIndexedDB();
   }, [isFavorites]);
 
+  const notify = () =>
+    toast(!isFavorites ? 'Aded to favorites' : 'Remove from favorites', {
+      position: 'bottom-right',
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      theme,
+      progress: undefined,
+    });
+
   const favoriteButtonHandler = async (e) => {
     e.preventDefault();
     if (!isFavorites) {
@@ -65,12 +77,14 @@ export default function MovieDetailMain() {
       await db.favorites.delete(detail.id);
     }
     setIsFavorites(!isFavorites);
+    notify();
   };
 
   return (
     <section className="main-details-section pt-52 pb-10 relative h-full min-h-[620px]">
       {!isloading && (
         <div className="container">
+          <ToastContainer />
           {/* Backdrop Image Section */}
           <div className="backdrop-wrap rounded-b-lg ">
             <img
@@ -154,7 +168,6 @@ export default function MovieDetailMain() {
                     Watch Trailer
                   </Button>
 
-                  {/* TODO Add indexed db for favorites movie */}
                   <Button
                     isFull
                     className="button-icon "
