@@ -12,6 +12,7 @@ import MovieDetail from './pages/MovieDetail';
 import Categories from './pages/Categories';
 import CategoriesLists from './pages/CategoriesLists';
 import ScrollToTop from './helpers/ScrollToTop';
+import Favorites from './pages/Favorites';
 
 const { ThemeProvider } = ThemeContext;
 function App() {
@@ -40,6 +41,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="categories" element={<Categories />} />
+            <Route path="favorites" element={<Favorites />} />
+
             <Route path="categories/:id" element={<CategoriesLists />} />
 
             <Route path="movie/:id" element={<MovieDetail />} />
