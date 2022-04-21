@@ -34,7 +34,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="App bg-slate-100 dark:bg-dark z-10" >
+      <div className="App bg-slate-100 dark:bg-dark z-10">
         <Header />
         <ScrollToTop>
           <Routes>

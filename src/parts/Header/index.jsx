@@ -12,7 +12,7 @@ export default function Header(props) {
 
   return (
     <header
-      className={`bg-transparent absolute top-0 left-0 w-full flex items-center z-10 py-6  ${className.join(
+      className={`bg-slate-100 bg-opacity-80 backdrop-blur-sm dark:bg-opacity-90  dark:bg-dark absolute top-0 left-0 w-full flex items-center z-10 py-6  ${className.join(
         ' '
       )}`}
     >
@@ -24,7 +24,6 @@ export default function Header(props) {
               <NavLink
                 key={index}
                 to={link === 'Home' ? '/' : `/${link.toLowerCase()}`}
-                
                 className="nav-link font-medium text-lg text-slate-500 ml-3 dark:text-slate-200 inline-block px-3 py-3"
               >
                 {link}

@@ -58,7 +58,9 @@ export default function Button(props) {
 
   return (
     <button
-      className={`button-components ${className.join(' ')}`}
+      className={`button-components ${
+        props.isFull ? 'full' : 'default '
+      } ${className.join(' ')}`}
       style={props.style}
       onClick={props.onClick}
       type="button"

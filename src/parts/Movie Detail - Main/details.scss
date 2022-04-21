@@ -1,4 +1,7 @@
 .main-details-section {
+  & * {
+    @apply transition duration-300 ease-in-out;
+  }
   .backdrop-wrap {
     img,
     .background-overlay {
@@ -12,12 +15,6 @@
   .movie-details-wrap {
     img {
       @apply h-80 object-cover object-center;
-    }
-  }
-
-  .movie-details-content-genres {
-    .genre-button {
-      @apply transition duration-300 ease-in-out;
     }
   }
 }
