@@ -1,4 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
+
+import Dexie from 'dexie';
+import { useLiveQuery } from 'dexie-react-hooks';
+
 import axios from 'axios';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -26,6 +30,7 @@ export default function MovieDetailMain() {
   const { detail } = props;
 
   const [isloading, setLoading] = useState(true);
+  const [isFavorites, setIsFavorites] = useState();
 
   useEffect(() => {
     axios
@@ -35,24 +40,35 @@ export default function MovieDetailMain() {
         setLoading(false);
       });
   }, []);
-  console.log(props);
+  // console.log(props);
+
+  useEffect(() => {
+    const getIndexedDB = async () => {
+      const all = await db.favorites.toArray();
+      const isFavorites = all.some((item) => item.id === Number(id));
+      setIsFavorites(isFavorites);
+    };
+    getIndexedDB();
+  }, [isFavorites]);
 
   const favoriteButtonHandler = async (e) => {
     e.preventDefault();
-
-    const favorites = await db.friends.add({
-      id: detail.id,
-      title: detail.title,
-      poster_path: detail.poster_path,
-      release_date: detail.release_date,
-      vote_average: detail.vote_average,
-    });
-    console.log(favorites);
-    // props.setFavorite(!props.isFavorite);
+    if (!isFavorites) {
+      await db.favorites.add({
+        id: detail.id,
+        title: detail.title,
+        poster_path: detail.poster_path,
+        release_date: detail.release_date,
+        vote_average: detail.vote_average,
+      });
+    } else {
+      await db.favorites.delete(detail.id);
+    }
+    setIsFavorites(!isFavorites);
   };
 
   return (
-    <section className="main-details-section pt-52 pb-10 relative h-full min-h-[650px]">
+    <section className="main-details-section pt-52 pb-10 relative h-full min-h-[620px]">
       {!isloading && (
         <div className="container">
           {/* Backdrop Image Section */}
@@ -134,17 +150,23 @@ export default function MovieDetailMain() {
                     w-fit flex items-center mr-5  transition duration-300 ease-in-out"
                     href={`/movie/${detail.id}`}
                   >
-                    <span className="material-icons">play_arrow</span>
+                    <span className="material-icons mr-2">play_arrow</span>
                     Watch Trailer
                   </Button>
 
                   {/* TODO Add indexed db for favorites movie */}
                   <Button
                     isFull
-                    className="button-icon"
+                    className="button-icon "
                     onClick={favoriteButtonHandler}
                   >
-                    <span className="material-icons">favorite_border</span>
+                    {isFavorites ? (
+                      <span className="material-icons-outlined">favorite</span>
+                    ) : (
+                      <span className="material-icons-outlined">
+                        favorite_border
+                      </span>
+                    )}
                   </Button>
 
                   <Button
