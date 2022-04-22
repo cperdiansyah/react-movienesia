@@ -1,17 +1,16 @@
 import React from 'react';
-import { HelmetProvider } from 'react-helmet-async';
 
 import MovieDetailContext from '../context/MovieDetailContext';
 import MovieDetailsMain from '../parts/Movie Detail - Main';
+import MovieDetailOverview from '../parts/Movie Detail - Overview';
 
 const { MovieDetailProvider } = MovieDetailContext;
 
 export default function MovieDetail() {
   return (
-    <HelmetProvider>
-      <MovieDetailProvider>
-        <MovieDetailsMain  />
-      </MovieDetailProvider>
-    </HelmetProvider>
+    <MovieDetailProvider>
+      <MovieDetailsMain />
+      <MovieDetailOverview />
+    </MovieDetailProvider>
   );
 }

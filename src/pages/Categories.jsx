@@ -1,4 +1,6 @@
 import React from 'react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+
 import Button from '../components/Button';
 import CardCategory from '../components/Card Categories';
 
@@ -121,39 +123,44 @@ export default function Categories() {
   ];
 
   return (
-    <section className="hero-categories-section py-10 pt-36">
-      <div className="container">
-        <div className="title-wrapper flex items-center">
-          <div className=" md:w-1/2 ">
-            <h3
-              className="title font-bold text-5xl  leading-snug
+    <HelmetProvider>
+      <Helmet>
+        <title>Categories | MovieNesia</title>
+      </Helmet>
+      <section className="hero-categories-section py-10 pt-36">
+        <div className="container">
+          <div className="title-wrapper flex items-center">
+            <div className=" md:w-1/2 ">
+              <h3
+                className="title font-bold text-5xl  leading-snug
           text-text_primary
           dark:text-text_primary_dark"
-            >
-              Choose The Type Of Film You Liked
-            </h3>
-          </div>
-          <p
-            className="md:w-1/2 text-base
+              >
+                Choose The Type Of Film You Liked
+              </h3>
+            </div>
+            <p
+              className="md:w-1/2 text-base
            text-text_secondary
             dark:text-text_secondary_dark"
-          >
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed
-            dolores totam harum, magni ducimus, pariatur necessitatibus quasi
-            aut, dolorum aspernatur tempore eum maiores reiciendis nisi!
-            Molestiae obcaecati molestias quae assumenda?
-          </p>
-        </div>
-        <div
-          className="categories-wrapper w-full mt-10 
+            >
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed
+              dolores totam harum, magni ducimus, pariatur necessitatibus quasi
+              aut, dolorum aspernatur tempore eum maiores reiciendis nisi!
+              Molestiae obcaecati molestias quae assumenda?
+            </p>
+          </div>
+          <div
+            className="categories-wrapper w-full mt-10 
           grid grid-cols-2 gap-5 md:grid-cols-3
          lg:grid-cols-4 "
-        >
-          {categories.map((category) => (
-            <CardCategory key={category.id} category={category} />
-          ))}
+          >
+            {categories.map((category) => (
+              <CardCategory key={category.id} category={category} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </HelmetProvider>
   );
 }

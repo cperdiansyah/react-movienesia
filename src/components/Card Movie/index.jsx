@@ -13,6 +13,7 @@ export default function CardMovie({ movie, className, type }) {
   const classname = [className];
 
   const title = type === 'movie' ? movie.title : movie.name;
+
   const slug = slugify(title);
   return (
     <div className={`card-movie ${classname.join(' ')}`}>
