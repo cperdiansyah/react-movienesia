@@ -1,9 +1,6 @@
 header {
   @apply transition duration-[400ms] ease-in-out;
 
-  & * {
-    @apply transition duration-[400ms] ease-in-out;
-  }
   nav {
     a.nav-link {
       &.active {

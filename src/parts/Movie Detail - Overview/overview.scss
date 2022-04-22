@@ -1,0 +1,22 @@
+.overview-section {
+  .react-tabs {
+    .react-tabs__tab-list {
+      li {
+        @apply text-lg font-normal dark:text-white rounded-none transition duration-300 ease-in-out;
+
+        &:first-child {
+          @apply rounded-tr-lg;
+        }
+        &:last-child {
+          @apply rounded-t-lg;
+        }
+        &:focus:after {
+          @apply bg-transparent;
+        }
+        &[aria-selected='true'] {
+          @apply dark:text-dark font-medium;
+        }
+      }
+    }
+  }
+}

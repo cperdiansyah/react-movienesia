@@ -36,7 +36,7 @@ export default function MovieDetailMain() {
   useEffect(() => {
     axios
       .get(
-        `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=recommendations,videos,credits,external_ids`
+        `${BASE_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=images`
       )
       .then(({ data }) => {
         props.setDetails(data);
@@ -86,6 +86,9 @@ export default function MovieDetailMain() {
     notify();
   };
 
+  const images = detail ? detail.images : [];
+  // console.log(images);
+
   return (
     <HelmetProvider>
       {!isloading && (
@@ -105,6 +108,7 @@ export default function MovieDetailMain() {
                 alt={`${detail.title} backdrop`}
                 loading="lazy"
                 className="backdrop-image object-cover "
+                decoding="async"
               />
               <div className="background-overlay " />
             </div>
@@ -118,6 +122,7 @@ export default function MovieDetailMain() {
                     alt={`${detail.title} poster`}
                     className="rounded-3xl"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div
@@ -150,7 +155,7 @@ export default function MovieDetailMain() {
               <div className="movie-details-content">
                 <div className="movie-details-content-wrap">
                   <div className="movie-details-content-header">
-                    <h1 className="text-4xl font-bold text-dark drop-shadow-md dark:text-text_primary_dark">
+                    <h1 className="text-4xl font-bold text-dark drop-shadow-lg dark:text-text_primary_dark">
                       {`${detail.title} (${detail.release_date.split('-')[0]})`}
                     </h1>
                   </div>
@@ -158,9 +163,11 @@ export default function MovieDetailMain() {
                     {detail.genres.map((genre, index) => (
                       <Button
                         type="link"
-                        className="genre-button px-3 py-2 mr-2 rounded-xl shadow-lg text-base font-medium  border-2 bg-slate-800 border-slate-800 bg-opacity-80
-                      border-transparent text-white hover:bg-opacity-100
-                      dark:bg-transparent dark:border-slate-200 dark:text-text_primary_dark dark:hover:border-slate-100 dark:active:border-slate-300
+                        className="genre-button px-3 py-2 mr-2 rounded-xl shadow-lg text-base font-medium  border-2 
+                        bg-transparent border-slate-800 
+                      border-transparent text-dark hover:bg-slate-100 hover:bg-opacity-60 
+
+                    dark:border-slate-200 dark:text-text_primary_dark dark:hover:bg-dark dark:hover:bg-opacity-70 dark:hover:border-slate-100 dark:active:border-slate-300
                       transition duration-300 ease-in-out
                     "
                         href={`/categories/${genre.id}`}
@@ -191,7 +198,7 @@ export default function MovieDetailMain() {
                       onClick={favoriteButtonHandler}
                     >
                       {isFavorites ? (
-                        <span className="material-icons-outlined">
+                        <span className="material-icons-outlined favorited">
                           favorite
                         </span>
                       ) : (

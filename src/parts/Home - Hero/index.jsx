@@ -32,7 +32,13 @@ export default function Hero() {
             </Button>
           </div>
           <div className="w-full md:w-1/2">
-            <img className="w-full " src={backdrop} alt="Hero" loading="lazy" />
+            <img
+              className="w-full "
+              src={backdrop}
+              alt="Hero"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </div>

@@ -23,6 +23,7 @@ export default function CardMovie({ movie, className, type }) {
             src={`${IMAGE_BASE_URL}${movie.poster_path}`}
             alt={title}
             loading="lazy"
+            decoding="async"
           />
         </div>
         <div className="content-wrapper px-1">

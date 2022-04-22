@@ -19,6 +19,7 @@ export default function Brand(props) {
               alt="brand-icon"
               className="h-11 w-11"
               loading="lazy"
+              decoding="async"
             />
             <h3 className="font-semibold text-xl">
               <span className="text-primary">Movie</span>
@@ -32,7 +33,12 @@ export default function Brand(props) {
   return (
     <div className="brand-wrapper">
       <Button className="brand" type="link" href="/">
-        <img src={logo} alt="brand-icon" className={`brand ${className}`} />
+        <img
+          src={logo}
+          alt="brand-icon"
+          className={`brand ${className}`}
+          decoding="async"
+        />
       </Button>
     </div>
   );

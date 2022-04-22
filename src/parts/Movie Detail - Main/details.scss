@@ -6,7 +6,7 @@
     }
 
     .background-overlay {
-      @apply bg-gradient-to-b from-transparent to-slate-100 dark:to-dark opacity-70;
+      @apply bg-gradient-to-b from-transparent via-slate-100 to-slate-200 dark:via-slate-800 dark:to-dark opacity-50 dark:opacity-70;
     }
   }
 
@@ -18,10 +18,15 @@
 
   .movie-details-content-link {
     .button-icon {
-      @apply p-2 mr-3 rounded-full flex justify-center items-center bg-dark bg-opacity-80 border-2 border-transparent text-white hover:bg-opacity-100 
-      dark:bg-transparent dark:border-slate-200 dark:text-text_primary_dark dark:hover:border-slate-100 dark:hover:bg-slate-100 dark:hover:text-dark 
+      @apply p-2 mr-3 rounded-full flex justify-center items-center 
+      bg-transparent bg-opacity-80 border-2 border-dark text-dark hover:bg-slate-100 hover:bg-opacity-70 
+       dark:border-slate-200 dark:text-text_primary_dark dark:hover:border-slate-100 dark:hover:bg-slate-100 dark:hover:text-dark 
       dark:active:border-slate-300 
       transition duration-300 ease-in-out;
+
+      .favorited {
+        @apply text-red-600 dark:text-inherit;
+      }
     }
   }
 }
