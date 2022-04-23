@@ -32,7 +32,9 @@ export default function CardMovie({ movie, className, type }) {
               <span className="material-icons-outlined text-yellow-400 mr-1">
                 star
               </span>
-              <span className="rate font-medium">{movie.vote_average}</span>
+              <span className="rate font-medium">
+                {Number(movie.vote_average).toFixed(1)}
+              </span>
             </div>
 
             <span className="text-sm text-text_secondary">

@@ -102,7 +102,7 @@ export default function HeroMovies() {
       discoverTitle = '';
   }
   return (
-    <section className="hero-movies py-12" id="discover">
+    <section className="hero-movies py-12 pb-24" id="discover">
       <div className="container">
         <div className="title-wrapper">
           <h1

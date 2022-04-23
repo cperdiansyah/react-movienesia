@@ -9,6 +9,7 @@ import apiConfig from '../../api/api-config';
 
 import './overview.scss';
 import Button from '../../components/Button';
+import CardMovie from '../../components/Card Movie';
 
 const { MovieDetails } = MovieDetailContext;
 const { BASE_URL, API_KEY } = apiConfig;
@@ -16,8 +17,6 @@ const { BASE_URL, API_KEY } = apiConfig;
 export default function MovieDetailOverview() {
   const { detail } = useContext(MovieDetails);
   const [credit, setCredit] = useState([]);
-  const [images, setImages] = useState([]);
-
   useEffect(() => {
     if (detail) {
       axios
@@ -32,20 +31,12 @@ export default function MovieDetailOverview() {
     }
   }, [detail]);
 
-  useEffect(() => {
-    if (detail) {
-      axios
-        .get(`${BASE_URL}/movie/${detail.id}/images?api_key=${API_KEY}`)
-        .then(({ data }) => {
-          setImages(data);
-        });
-    }
-  }, [detail]);
+  const { cast } = credit ?? [];
 
-  const cast = credit ? credit.cast : [];
+  const { backdrops, posters } = detail ? detail.images : [];
 
-  const backdrops = images ? images.backdrops : [];
-  const posters = images ? images.posters : [];
+  const { recommendations } = detail ?? [];
+  console.log(recommendations);
 
   return (
     <section className="overview-section py-12 mt-5">
@@ -88,16 +79,48 @@ export default function MovieDetailOverview() {
                             </div>
                           </div>
                         ))}
-                      <a
+
+                      <Button
+                        type="link"
+                        isExternal
+                        target="_blank"
                         href={`https://www.themoviedb.org/movie/${detail.id}/images/backdrops`}
                         className="dark:text-text_primary_dark text-lg font-semibold underline underline-offset-2 pl-2"
                       >
                         See More Backdrops
-                      </a>
+                      </Button>
                     </div>
                   </TabPanel>
                   <TabPanel>
-                    <h2>Any content 2</h2>
+                    <div className="posters-wrapper flex flex-wrap flex-row w-full">
+                      {posters &&
+                        posters.slice(0, 8).map((posters, index) => (
+                          <div
+                            className="posters-wrapper md:w-1/4 p-2"
+                            key={index}
+                          >
+                            <div className="posters-item ">
+                              <img
+                                src={`https://image.tmdb.org/t/p/w500${posters.file_path}`}
+                                alt={`${detail.title} posters`}
+                                loading="lazy"
+                                decoding="async"
+                                className="posters-img w-full  rounded-xl shadow-lg"
+                              />
+                            </div>
+                          </div>
+                        ))}
+
+                      <Button
+                        type="link"
+                        isExternal
+                        target="_blank"
+                        href={`https://www.themoviedb.org/movie/${detail.id}/images/posters`}
+                        className="dark:text-text_primary_dark text-lg font-semibold underline underline-offset-2 pl-2"
+                      >
+                        See More Posters
+                      </Button>
+                    </div>
                   </TabPanel>
                 </Tabs>
               </div>
@@ -158,6 +181,24 @@ export default function MovieDetailOverview() {
               </div>
             </div>
           </div>
+
+          {recommendations && (
+            <div className="recomendations-wrapper mt-5">
+              <h2 className="text-2xl font-bold text-dark drop-shadow-md dark:text-text_primary_dark ">
+                Recommendations Movie
+              </h2>
+              <div className="movie-wrapper grid grid-cols-6 gap-4 w-full mt-4">
+                {recommendations.results.slice(0, 6).map((movie) => (
+                  <CardMovie
+                    key={movie.id}
+                    movie={movie}
+                    type="movie"
+                    className="w-full"
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </section>

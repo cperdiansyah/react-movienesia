@@ -36,14 +36,13 @@ export default function MovieDetailMain() {
   useEffect(() => {
     axios
       .get(
-        `${BASE_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=images`
+        `${BASE_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=recommendations,images`
       )
       .then(({ data }) => {
         props.setDetails(data);
         setLoading(false);
       });
   }, []);
-  // console.log(props);
 
   useEffect(() => {
     const getIndexedDB = async () => {
