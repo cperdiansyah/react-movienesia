@@ -11,7 +11,7 @@
   }
 
   .movie-details-wrap {
-    img {
+    img:not(.backdrop-selector) {
       @apply h-80 object-cover object-center;
     }
   }
@@ -26,6 +26,18 @@
 
       .favorited {
         @apply text-red-600 dark:text-inherit;
+      }
+    }
+  }
+
+  .movie-backdrops-selector {
+    @apply left-1/2 top-1/2 translate-x-1/2 -translate-y-1/2;
+    // transform: translate(-50%, -50%);
+
+    .backdrop-wrapper {
+      @apply overflow-scroll;
+      &::-webkit-scrollbar {
+        @apply hidden;
       }
     }
   }

@@ -36,7 +36,7 @@ export default function MovieDetailOverview() {
   const { backdrops, posters } = detail ? detail.images : [];
 
   const { recommendations } = detail ?? [];
-  console.log(recommendations);
+  // console.log(recommendations);
 
   return (
     <section className="overview-section py-12 mt-5">
