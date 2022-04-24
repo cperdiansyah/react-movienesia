@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-import Button from '../components/Button';
 import CardCategory from '../components/Card Categories';
 
 export default function Categories() {
@@ -129,8 +128,8 @@ export default function Categories() {
       </Helmet>
       <section className="hero-categories-section py-10 pt-36">
         <div className="container">
-          <div className="title-wrapper flex items-center">
-            <div className=" md:w-1/2 ">
+          <div className="title-wrapper text-center">
+            <div className=" w-full">
               <h3
                 className="title font-bold text-5xl  leading-snug
           text-text_primary
@@ -140,7 +139,7 @@ export default function Categories() {
               </h3>
             </div>
             <p
-              className="md:w-1/2 text-base
+              className="w-1/2 mx-auto mt-5 text-base
            text-text_secondary
             dark:text-text_secondary_dark"
             >
@@ -150,6 +149,7 @@ export default function Categories() {
               Molestiae obcaecati molestias quae assumenda?
             </p>
           </div>
+
           <div
             className="categories-wrapper w-full mt-10 
           grid grid-cols-2 gap-5 md:grid-cols-3

@@ -112,116 +112,112 @@ export default function MovieDetailMain() {
               <div className="background-overlay " />
             </div>
 
-            <div className="movie-details-wrap  flex items-end justify-between w-full relative">
-              {/* Movie Information sections */}
+            <div className="movie-details-wrap  flex items-end  w-full relative">
+              {/* Poster Image Section */}
 
-              <div className="movie-details-content-wrap flex items-end w-2/3">
-                {/* Poster Image Section */}
-                <div className="movie-details-image mr-10 relative">
-                  <div className="movie-details-image-wrapper">
-                    <img
-                      src={`${IMAGE_BASE_URL}${detail.poster_path}`}
-                      alt={`${detail.title} poster`}
-                      className="rounded-3xl"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div
-                    className="movie-details-rating-wrapper absolute -bottom-5 right-0"
-                    style={{ width: 60, height: 60 }}
-                  >
-                    <ProgressProvider
-                      valueStart={0}
-                      valueEnd={detail.vote_average}
-                    >
-                      {(value) => (
-                        <CircularProgressbar
-                          value={value}
-                          maxValue={10}
-                          text={`${value * 10}%`}
-                          className="bg-dark rounded-full shadow-lg text-xl"
-                          styles={buildStyles({
-                            // Text size
-                            textSize: '1.5rem',
-                            textColor: '#fff',
-                            pathTransitionDuration: 1.7,
-                          })}
-                        />
-                      )}
-                    </ProgressProvider>
-                  </div>
+              <div className="movie-details-image mr-10 relative ">
+                <div className="movie-details-image-wrapper">
+                  <img
+                    src={`${IMAGE_BASE_URL}${detail.poster_path}`}
+                    alt={`${detail.title} poster`}
+                    className="rounded-3xl"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
 
-                {/* Content Movie Details */}
-                <div className="movie-details-content">
-                  <div className="movie-details-content-wrap">
-                    <div className="movie-details-content-header">
-                      <h1 className="text-4xl font-bold text-dark drop-shadow-lg dark:text-text_primary_dark">
-                        {`${detail.title} (${
-                          detail.release_date.split('-')[0]
-                        })`}
-                      </h1>
-                    </div>
-                    <div className="movie-details-content-genres mt-5">
-                      {detail.genres.map((genre, index) => (
-                        <Button
-                          type="link"
-                          className="genre-button px-3 py-2 mr-2 rounded-xl shadow-lg text-base font-medium  border-2 
-                        bg-transparent border-slate-800 
-                      border-transparent text-dark hover:bg-slate-100 hover:bg-opacity-60 
+                <div
+                  className="movie-details-rating-wrapper absolute -bottom-5 right-0"
+                  style={{ width: 60, height: 60 }}
+                >
+                  <ProgressProvider
+                    valueStart={0}
+                    valueEnd={detail.vote_average}
+                  >
+                    {(value) => (
+                      <CircularProgressbar
+                        value={value}
+                        maxValue={10}
+                        text={`${value * 10}%`}
+                        className="bg-dark rounded-full shadow-lg text-xl"
+                        styles={buildStyles({
+                          // Text size
+                          textSize: '1.5rem',
+                          textColor: '#fff',
+                          pathTransitionDuration: 1.7,
+                        })}
+                      />
+                    )}
+                  </ProgressProvider>
+                </div>
+              </div>
+
+              {/* Content Movie Details */}
+              <div className="movie-details-content">
+                <div className="movie-details-content-wrap">
+                  <div className="movie-details-content-header">
+                    <h1 className="text-4xl font-bold text-dark drop-shadow-lg dark:text-text_primary_dark">
+                      {`${detail.title} (${detail.release_date.split('-')[0]})`}
+                    </h1>
+                  </div>
+
+                  <div className="movie-details-content-genres mt-5">
+                    {detail.genres.map((genre, index) => (
+                      <Button
+                        type="link"
+                        className="genre-button px-3 py-2 mr-2 rounded-xl shadow-lg text-base font-medium  border-2   bg-transparent border-slate-800 
+                       text-dark hover:bg-slate-100 hover:bg-opacity-60 
 
                     dark:border-slate-200 dark:text-text_primary_dark dark:hover:bg-dark dark:hover:bg-opacity-70 dark:hover:border-slate-100 dark:active:border-slate-300
                       transition duration-300 ease-in-out
                     "
-                          href={`/categories/${genre.id}`}
-                          key={index}
-                        >
-                          {genre.name}
-                        </Button>
-                      ))}
-                    </div>
+                        href={`/categories/${genre.id}`}
+                        key={index}
+                      >
+                        {genre.name}
+                      </Button>
+                    ))}
+                  </div>
 
-                    <div className="movie-details-content-link mt-6 flex items-center">
-                      <Button
-                        type="link"
-                        isExternal
-                        className="px-4 pr-5 py-3 rounded-full shadow-lg font-medium 
+                  <div className="movie-details-content-link mt-6 flex items-center">
+                    <Button
+                      type="link"
+                      isExternal
+                      className="px-4 pr-5 py-3 rounded-full shadow-lg font-medium 
                     bg-secondary text-white hover:bg-sky-400 active:bg-sky-600
                     dark:bg-slate-200 dark:text-dark
                     w-fit flex items-center mr-5  transition duration-300 ease-in-out"
-                        href={`/movie/${detail.id}`}
-                      >
-                        <span className="material-icons mr-2">play_arrow</span>
-                        Watch Trailer
-                      </Button>
+                      href={`/movie/${detail.id}`}
+                    >
+                      <span className="material-icons mr-2">play_arrow</span>
+                      Watch Trailer
+                    </Button>
 
-                      <Button
-                        isFull
-                        className="button-icon "
-                        onClick={favoriteButtonHandler}
-                      >
-                        {isFavorites ? (
-                          <span className="material-icons-outlined favorited">
-                            favorite
-                          </span>
-                        ) : (
-                          <span className="material-icons-outlined">
-                            favorite_border
-                          </span>
-                        )}
-                      </Button>
+                    <Button
+                      isFull
+                      className="button-icon "
+                      onClick={favoriteButtonHandler}
+                    >
+                      {isFavorites ? (
+                        <span className="material-icons-outlined favorited">
+                          favorite
+                        </span>
+                      ) : (
+                        <span className="material-icons-outlined">
+                          favorite_border
+                        </span>
+                      )}
+                    </Button>
 
-                      <Button
-                        type="link"
-                        isExternal
-                        href={detail.homepage ? detail.homepage : '#'}
-                        target="_blank"
-                        className="button-icon"
-                      >
-                        <span className="material-icons-outlined">link</span>
-                      </Button>
-                    </div>
+                    <Button
+                      type="link"
+                      isExternal
+                      href={detail.homepage ? detail.homepage : '#'}
+                      target="_blank"
+                      className="button-icon"
+                    >
+                      <span className="material-icons-outlined">link</span>
+                    </Button>
                   </div>
                 </div>
               </div>
