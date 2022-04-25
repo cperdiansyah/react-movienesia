@@ -10,9 +10,13 @@ import './App.css';
 import ThemeContext from './context/ThemeContext';
 import MovieDetail from './pages/MovieDetail';
 import Categories from './pages/Categories';
-import CategoriesLists from './pages/CategoriesLists';
 import ScrollToTop from './helpers/ScrollToTop';
 import Favorites from './pages/Favorites';
+import Discover from './pages/Discover';
+
+import SearchContext from './context/SearchContext';
+
+const { SearchProvider } = SearchContext;
 
 const { ThemeProvider } = ThemeContext;
 function App() {
@@ -35,22 +39,30 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="App bg-slate-100 dark:bg-dark z-10">
-        <Header />
-        <ScrollToTop>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="categories" element={<Categories />} />
-            <Route path="favorites" element={<Favorites />} />
+      <SearchProvider>
+        <div className="App bg-slate-100 dark:bg-dark z-10">
+          <Header />
+          <ScrollToTop>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="categories" element={<Categories />} />
+              <Route path="favorites" element={<Favorites />} />
 
-            <Route path="categories/:id" element={<CategoriesLists />} />
+              <Route path="movie/:id" element={<MovieDetail />} />
 
-            <Route path="movie/:id" element={<MovieDetail />} />
-          </Routes>
-        </ScrollToTop>
+              <Route path="discover" element={<Discover />}>
+                <Route path="discover/:query" element={<Discover />} />
+                <Route
+                  path="discover/categories/:query"
+                  element={<Discover />}
+                />
+              </Route>
+            </Routes>
+          </ScrollToTop>
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </SearchProvider>
     </ThemeProvider>
   );
 }

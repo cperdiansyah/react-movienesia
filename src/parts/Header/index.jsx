@@ -1,14 +1,17 @@
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import Brand from '../../components/Brand';
+import SearchForm from '../../components/Search Form';
 import ToogleDarkmode from '../../components/ToogleDrakmode';
 import './header.scss';
+
+import SearchContext from '../../context/SearchContext';
 
 export default function Header(props) {
   const className = [props.className];
 
-  const navLinks = ['Home', 'Categories', 'Favorites', 'About'];
+  const navLinks = ['Home', 'Categories', 'Favorites'];
 
   return (
     <header
@@ -17,8 +20,8 @@ export default function Header(props) {
       )}`}
     >
       <div className="container flex flex-row justify-between items-center">
-        <Brand isFull className="w-1/2 " />
-        <div className="nav-wrap flex items-center w-1/2 justify-end">
+        <Brand isFull className="w-1/3 " />
+        <div className="nav-wrap flex items-center w-2/3 justify-end">
           <nav className="mr-5">
             {navLinks.map((link, index) => (
               <NavLink
@@ -30,6 +33,8 @@ export default function Header(props) {
               </NavLink>
             ))}
           </nav>
+          <SearchForm className="w-1/3" />
+
           <ToogleDarkmode />
         </div>
       </div>
