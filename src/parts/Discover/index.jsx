@@ -60,7 +60,7 @@ export default function DiscoverSection() {
               >
                 Search :{' '}
                 {query.has('genres')
-                  ? `Categories ${pathname.split('/')[3]}`
+                  ? `Categories ${decodeURI(pathname.split('/')[3])}`
                   : search}
               </h5>
             )}
