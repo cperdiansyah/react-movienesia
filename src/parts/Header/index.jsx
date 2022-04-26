@@ -6,7 +6,7 @@ import SearchForm from '../../components/Search Form';
 import ToogleDarkmode from '../../components/ToogleDrakmode';
 import './header.scss';
 
-import SearchContext from '../../context/SearchContext';
+
 
 export default function Header(props) {
   const className = [props.className];

@@ -20,7 +20,18 @@ export default function Favorites() {
       <Helmet>
         <title>Favorites | MovieNesia</title>
       </Helmet>
-      <section className=" hero-movies pt-24 pb-12">
+      <section className=" hero-movies pt-32 pb-24">
+        <div className="title-wrapper text-center">
+          <div className=" w-full">
+            <h3
+              className="title font-bold text-5xl  leading-snug
+          text-text_primary
+          dark:text-text_primary_dark"
+            >
+              Your Favorites Movies or Shows
+            </h3>
+          </div>
+        </div>
         {favorites && (
           <div className="container">
             <div className="movie-wrapper grid grid-cols-6 gap-4 w-full mt-10">

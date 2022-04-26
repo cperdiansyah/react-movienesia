@@ -13,14 +13,17 @@ export default function CardMovie({ movie, className, type }) {
   const classname = [className];
 
   const title = type === 'movie' ? movie.title : movie.name;
-
   const slug = slugify(title);
   return (
     <div className={`card-movie ${classname.join(' ')}`}>
       <Link to={`/${type}/${slug}?id=${movie.id}`}>
         <div className="image-wrapper">
           <img
-            src={`${IMAGE_BASE_URL}${movie.poster_path}`}
+            src={
+              movie.poster_path
+                ? `${IMAGE_BASE_URL}${movie.poster_path}`
+                : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS2sRlULpZo5zSIWdlCAaHkCXrRUEG-9mFrc19z4J3PWeiuPArJgsy1VqOW9H6ybhdUps&usqp=CAU'
+            }
             alt={title}
             loading="lazy"
             decoding="async"

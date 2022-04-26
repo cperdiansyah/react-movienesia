@@ -14,10 +14,6 @@ import ScrollToTop from './helpers/ScrollToTop';
 import Favorites from './pages/Favorites';
 import Discover from './pages/Discover';
 
-import SearchContext from './context/SearchContext';
-
-const { SearchProvider } = SearchContext;
-
 const { ThemeProvider } = ThemeContext;
 function App() {
   window.onscroll = () => {
@@ -39,30 +35,25 @@ function App() {
 
   return (
     <ThemeProvider>
-      <SearchProvider>
-        <div className="App bg-slate-100 dark:bg-dark z-10">
-          <Header />
-          <ScrollToTop>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="categories" element={<Categories />} />
-              <Route path="favorites" element={<Favorites />} />
+      <div className="App bg-slate-100 dark:bg-dark z-10">
+        <Header />
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="categories" element={<Categories />} />
+            <Route path="favorites" element={<Favorites />} />
 
-              <Route path="movie/:id" element={<MovieDetail />} />
+            <Route path="movie/:id" element={<MovieDetail />} />
 
-              <Route path="discover" element={<Discover />}>
-                <Route path="discover/:query" element={<Discover />} />
-                <Route
-                  path="discover/categories/:query"
-                  element={<Discover />}
-                />
-              </Route>
-            </Routes>
-          </ScrollToTop>
+            <Route path="discover" element={<Discover />}>
+              <Route path=":query" element={<Discover />} />
+              <Route path="categories/:query" element={<Discover />} />
+            </Route>
+          </Routes>
+        </ScrollToTop>
 
-          <Footer />
-        </div>
-      </SearchProvider>
+        <Footer />
+      </div>
     </ThemeProvider>
   );
 }

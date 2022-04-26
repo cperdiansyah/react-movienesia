@@ -22,7 +22,7 @@ export default function CardCategory({ category }) {
 
         <Button
           type="link"
-          href={`/categories/${category.id}`}
+          href={`/discover/categories/${category.name}?genres=${category.id}`}
           className="underline text-base text-text_primary "
         >
           View More

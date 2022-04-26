@@ -171,7 +171,7 @@ export default function MovieDetailMain() {
                     dark:border-slate-200 dark:text-text_primary_dark dark:hover:bg-dark dark:hover:bg-opacity-70 dark:hover:border-slate-100 dark:active:border-slate-300
                       transition duration-300 ease-in-out
                     "
-                        href={`/categories/${genre.id}`}
+                        href={`/discover/categories/${genre.name}?genres=${genre.id}`}
                         key={index}
                       >
                         {genre.name}
