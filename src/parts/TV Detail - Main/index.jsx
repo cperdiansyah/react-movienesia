@@ -25,7 +25,7 @@ const { BASE_URL, API_KEY, IMAGE_BASE_URL_ORIGINAL, IMAGE_BASE_URL } =
 const { MovieDetails } = MovieDetailContext;
 const { Theme } = ThemeContext;
 
-export default function MovieDetailMain() {
+export default function TVDetailMain() {
   const { pathname } = useLocation();
   const query = useQuery();
 
@@ -39,7 +39,7 @@ export default function MovieDetailMain() {
   useEffect(() => {
     axios
       .get(
-        `${BASE_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=recommendations,images`
+        `${BASE_URL}/tv/${id}?api_key=${API_KEY}&append_to_response=recommendations,images`
       )
       .then(({ data }) => {
         props.setDetails(data);
@@ -76,11 +76,11 @@ export default function MovieDetailMain() {
     if (!isFavorites) {
       await db.favorites.add({
         id: detail.id,
-        title: detail.title,
+        name: detail.name,
         poster_path: detail.poster_path,
         release_date: detail.release_date,
         vote_average: detail.vote_average,
-        type: 'movie',
+        type: 'tv',
       });
     } else {
       await db.favorites.delete(detail.id);
@@ -93,7 +93,7 @@ export default function MovieDetailMain() {
     <HelmetProvider>
       {!isloading && (
         <Helmet>
-          <title>{detail.title} | MovieNesia</title>
+          <title>{detail.name} | MovieNesia</title>
         </Helmet>
       )}
 
@@ -158,8 +158,13 @@ export default function MovieDetailMain() {
                 <div className="movie-details-content-wrap">
                   <div className="movie-details-content-header">
                     <h1 className="text-4xl font-bold text-dark drop-shadow-lg dark:text-text_primary_dark">
-                      {`${detail.title} (${detail.release_date.split('-')[0]})`}
+                      {`${detail.name} `}
                     </h1>
+                    <h3 className="text-2xl font-semibold text-dark drop-shadow-lg dark:text-text_primary_dark">{`${
+                      detail.number_of_seasons
+                    } ${
+                      detail.number_of_seasons > 1 ? 'Seasons' : 'Season'
+                    }`}</h3>
                   </div>
 
                   <div className="movie-details-content-genres mt-5">

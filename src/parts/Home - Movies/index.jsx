@@ -101,6 +101,7 @@ export default function HeroMovies() {
     default:
       discoverTitle = '';
   }
+
   return (
     <section className="hero-movies py-12 pb-24" id="discover">
       <div className="container">

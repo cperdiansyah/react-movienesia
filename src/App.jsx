@@ -13,6 +13,7 @@ import Categories from './pages/Categories';
 import ScrollToTop from './helpers/ScrollToTop';
 import Favorites from './pages/Favorites';
 import Discover from './pages/Discover';
+import TvDetail from './pages/TvDetail';
 
 const { ThemeProvider } = ThemeContext;
 function App() {
@@ -44,6 +45,7 @@ function App() {
             <Route path="favorites" element={<Favorites />} />
 
             <Route path="movie/:id" element={<MovieDetail />} />
+            <Route path="tv/:id" element={<TvDetail />} />
 
             <Route path="discover" element={<Discover />}>
               <Route path=":query" element={<Discover />} />

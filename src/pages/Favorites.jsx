@@ -15,6 +15,8 @@ export default function Favorites() {
     getIndexedDB();
   }, []);
 
+  console.log(favorites);
+
   return (
     <HelmetProvider>
       <Helmet>
@@ -39,7 +41,7 @@ export default function Favorites() {
                 <CardMovie
                   key={favorite.id}
                   movie={favorite}
-                  type="movie"
+                  type={favorite.type}
                   className="w-full"
                 />
               ))}

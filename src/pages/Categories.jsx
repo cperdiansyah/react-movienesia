@@ -156,7 +156,7 @@ export default function Categories() {
          lg:grid-cols-4 "
           >
             {categories.map((category) => (
-              <CardCategory key={category.id} category={category} />
+              <CardCategory key={category.id} category={category}  />
             ))}
           </div>
         </div>

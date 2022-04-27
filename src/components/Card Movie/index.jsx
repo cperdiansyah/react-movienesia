@@ -9,14 +9,15 @@ import './cardMovie.scss';
 
 const { IMAGE_BASE_URL } = apiConfig;
 
-export default function CardMovie({ movie, className, types }) {
+export default function CardMovie({ movie, className, type }) {
   const classname = [className];
 
-  const type = types || 'movie';
+  const types = type ?? 'movie';
 
-  const title = type === 'movie' ? movie.title : movie.name;
+  const title = types === 'movie' ? movie.title : movie.name;
 
   const slug = slugify(title);
+
   return (
     <div className={`card-movie ${classname.join(' ')}`}>
       <Link to={`/${type}/${slug}?id=${movie.id}`}>
