@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { useLocation } from 'react-router-dom';
 
 import MovieDetailContext from '../../context/MovieDetailContext';
 import apiConfig from '../../api/api-config';
@@ -17,11 +18,15 @@ const { BASE_URL, API_KEY } = apiConfig;
 export default function MovieDetailOverview() {
   const { detail } = useContext(MovieDetails);
   const [credit, setCredit] = useState([]);
+  const { pathname } = useLocation();
+
+  const mediaType = pathname.split('/')[1];
+
   useEffect(() => {
     if (detail) {
       axios
         .get(
-          `${BASE_URL}/movie/${detail.id}/credits?api_key=${API_KEY}&language=en-US `
+          `${BASE_URL}/${mediaType}/${detail.id}/credits?api_key=${API_KEY}&language=en-US `
         )
         .then(({ data }) => {
           setCredit(data);
@@ -183,7 +188,7 @@ export default function MovieDetailOverview() {
           </div>
 
           {recommendations && (
-            <div className="recomendations-wrapper mt-5">
+            <div className="recomendations-wrapper mt-10">
               <h2 className="text-2xl font-bold text-dark drop-shadow-md dark:text-text_primary_dark ">
                 Recommendations Movie
               </h2>
@@ -192,7 +197,7 @@ export default function MovieDetailOverview() {
                   <CardMovie
                     key={movie.id}
                     movie={movie}
-                    type="movie"
+                    type={mediaType}
                     className="w-full"
                   />
                 ))}

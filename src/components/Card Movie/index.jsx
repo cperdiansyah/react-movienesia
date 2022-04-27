@@ -12,9 +12,7 @@ const { IMAGE_BASE_URL } = apiConfig;
 export default function CardMovie({ movie, className, type }) {
   const classname = [className];
 
-  const types = type ?? 'movie';
-
-  const title = types === 'movie' ? movie.title : movie.name;
+  const title = movie.title || movie.name;
 
   const slug = slugify(title);
 

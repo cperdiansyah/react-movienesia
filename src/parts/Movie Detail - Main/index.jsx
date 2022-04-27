@@ -35,11 +35,20 @@ export default function MovieDetailMain() {
   const { detail } = props;
   const [isloading, setLoading] = useState(true);
   const [isFavorites, setIsFavorites] = useState();
+  const mediaType = pathname.split('/')[1];
+
+  let title;
+
+  if (detail) {
+    title = mediaType === 'movie' ? detail.title : detail.name;
+  } else {
+    title = 'Loading...';
+  }
 
   useEffect(() => {
     axios
       .get(
-        `${BASE_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=recommendations,images`
+        `${BASE_URL}/${mediaType}/${id}?api_key=${API_KEY}&append_to_response=recommendations,images`
       )
       .then(({ data }) => {
         props.setDetails(data);
@@ -76,11 +85,11 @@ export default function MovieDetailMain() {
     if (!isFavorites) {
       await db.favorites.add({
         id: detail.id,
-        title: detail.title,
+        title,
         poster_path: detail.poster_path,
         release_date: detail.release_date,
         vote_average: detail.vote_average,
-        type: 'movie',
+        type: mediaType,
       });
     } else {
       await db.favorites.delete(detail.id);
@@ -93,7 +102,7 @@ export default function MovieDetailMain() {
     <HelmetProvider>
       {!isloading && (
         <Helmet>
-          <title>{detail.title} | MovieNesia</title>
+          <title>{title} | MovieNesia</title>
         </Helmet>
       )}
 
@@ -105,7 +114,7 @@ export default function MovieDetailMain() {
             <div className="backdrop-wrap rounded-b-lg ">
               <img
                 src={`${IMAGE_BASE_URL_ORIGINAL}${detail.backdrop_path}`}
-                alt={`${detail.title} backdrop`}
+                alt={`${title} backdrop`}
                 loading="lazy"
                 className="backdrop-image object-cover "
                 decoding="async"
@@ -120,7 +129,7 @@ export default function MovieDetailMain() {
                 <div className="movie-details-image-wrapper">
                   <img
                     src={`${IMAGE_BASE_URL}${detail.poster_path}`}
-                    alt={`${detail.title} poster`}
+                    alt={`${title} poster`}
                     className="rounded-3xl"
                     loading="lazy"
                     decoding="async"
@@ -157,9 +166,22 @@ export default function MovieDetailMain() {
               <div className="movie-details-content">
                 <div className="movie-details-content-wrap">
                   <div className="movie-details-content-header">
-                    <h1 className="text-4xl font-bold text-dark drop-shadow-lg dark:text-text_primary_dark">
-                      {`${detail.title} (${detail.release_date.split('-')[0]})`}
-                    </h1>
+                    {mediaType === 'movie' ? (
+                      <h1 className="text-4xl font-bold text-dark drop-shadow-lg dark:text-text_primary_dark">
+                        {`${title} (${detail.release_date.split('-')[0]})`}
+                      </h1>
+                    ) : (
+                      <>
+                        <h1 className="text-4xl font-bold text-dark drop-shadow-lg dark:text-text_primary_dark">
+                          {`${title} `}
+                        </h1>
+                        <h3 className="text-2xl font-semibold text-dark drop-shadow-lg dark:text-text_primary_dark">{`${
+                          detail.number_of_seasons
+                        } ${
+                          detail.number_of_seasons > 1 ? 'Seasons' : 'Season'
+                        }`}</h3>
+                      </>
+                    )}
                   </div>
 
                   <div className="movie-details-content-genres mt-5">
