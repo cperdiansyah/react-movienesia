@@ -103,10 +103,13 @@ export default function Footer() {
   return (
     <footer className="py-12 z-10 bg-gray-800">
       <div className="container">
-        <div className=" w-full flex footer-content pb-10 pt-5  px-7">
+        <div className=" w-full flex flex-col lg:flex-row   footer-content pb-10 pt-5  px-7">
           {footerContent.map((item, index) => (
-            <div className="footer-services md:w-1/4" key={index}>
-              <h3 className="text-xl font-medium text-text_primary_dark">
+            <div
+              className="footer-services mb-10 lg:w-1/4 text-center md:text-left"
+              key={index}
+            >
+              <h3 className="text-xl  font-medium text-text_primary_dark">
                 {item.section}
               </h3>
               <ul className="list-reset pt-3">
@@ -124,15 +127,15 @@ export default function Footer() {
             </div>
           ))}
 
-          <div className="footer-services md:w-1/4 ">
-            <h3 className="text-xl font-medium text-text_primary_dark">
+          <div className="footer-services w-full lg:w-1/4 ">
+            <h3 className="text-xl font-medium text-text_primary_dark text-center lg:text-left">
               Contact Us
             </h3>
-            <p className="pt-3 mt-4  text-text_secondary_dark text-lg">
+            <p className="pt-3 mt-4  text-text_secondary_dark text-lg text-center lg:text-left">
               Stay connected with us and let's know more stories about new
               movies and More Explorer Us for get it
             </p>
-            <div className="flex items-center mt-5">
+            <div className="flex items-center justify-center mt-5">
               {socialLinks.map((data, index) => (
                 <a
                   key={index}

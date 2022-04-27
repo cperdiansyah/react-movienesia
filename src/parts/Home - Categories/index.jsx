@@ -124,10 +124,10 @@ export default function HeroCategories() {
   return (
     <section className="hero-categories-section py-10">
       <div className="container">
-        <div className="title-wrapper flex items-center">
-          <div className=" md:w-1/2 ">
+        <div className="title-wrapper flex flex-wrap items-center">
+          <div className="w-full md:w-1/2 ">
             <h3
-              className="title font-bold text-5xl  leading-snug
+              className="title font-bold md:text-left text-center text-5xl leading-snug
           text-text_primary
           dark:text-text_primary_dark"
             >
@@ -136,13 +136,13 @@ export default function HeroCategories() {
             <Button
               type="link"
               href="/categories"
-              className="underline block w-fit ml-auto mr-14 text-lg text-text_secondary dark:text-text_secondary_dark"
+              className="underline block w-fit my-5 md:ml-auto mr-14 text-lg text-text_secondary dark:text-text_secondary_dark"
             >
               See more categories
             </Button>
           </div>
           <p
-            className="md:w-1/2 text-base
+            className="w-full md:w-1/2 text-base
            text-text_secondary
             dark:text-text_secondary_dark"
           >

@@ -108,14 +108,14 @@ export default function HeroMovies() {
         <div className="title-wrapper">
           <h1
             className="capitalize text-5xl font-bold text-text_primary leading-tight 
-          dark:text-text_primary_dark "
+          dark:text-text_primary_dark text-center lg:text-left "
           >
-            {discoverTitle}
-            <span className="block">{timingTitle}</span>
+            {discoverTitle} <span className="lg:block">{timingTitle}</span>
           </h1>
         </div>
-        <div className="button-wrapper mt-5 flex justify-between">
-          <div className="type-content-wrapper">
+
+        <div className="button-wrapper mt-5 flex flex-col lg:flex-row justify-between">
+          <div className="type-content-wrapper mt-3 lg:mt-0">
             <Button
               className="active mr-3"
               value="movie"
@@ -128,7 +128,7 @@ export default function HeroMovies() {
             </Button>
           </div>
 
-          <div className="filter-content-wrapper">
+          <div className="filter-content-wrapper overflow-x-scroll flex flex-row mt-5 lg:mt-0  ">
             <Button
               className="active"
               value={
@@ -165,7 +165,7 @@ export default function HeroMovies() {
           </div>
         </div>
 
-        <div className="movie-wrapper grid grid-cols-6 gap-4 w-full mt-10">
+        <div className="movie-wrapper grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full mt-10">
           {movies.map((movie) => (
             <CardMovie
               key={movie.id}

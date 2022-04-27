@@ -6,14 +6,14 @@ import './hero.scss';
 
 export default function Hero() {
   return (
-    <section className="hero-section pt-7 relative ">
+    <section className="hero-section pt-36 lg:pt-7 relative ">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="w-full md:w-1/2 relative">
             <h3 className="welcome-sign text-lg text-gray-500 dark:text-gray-200 font-medium flex items-center ">
               Welcome
             </h3>
-            <h4 className="text-5xl font-bold leading-tight mt-3 text-text_primary dark:text-text_primary_dark">
+            <h4 className="text-5xl font-bold leading-tight mt-3 text-text_primary dark:text-text_primary_dark  ">
               Explore millions of movies and TV shows
             </h4>
             <p className="text-lg mt-5 mb-10 text-text_secondary dark:text-text_secondary_dark ">
@@ -25,7 +25,7 @@ export default function Hero() {
               href="discover"
               className="px-3 py-4 rounded-md shadow-lg text-lg font-semibold 
               bg-primary text-white hover:bg-indigo-400 active:bg-indigo-600
-              dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-100 dark:active:bg-slate-300"
+              dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-100 dark:active:bg-slate-300 mx-auto block w-fit"
             >
               Discover Now
             </Button>
