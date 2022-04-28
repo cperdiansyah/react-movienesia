@@ -66,13 +66,18 @@ export default function DiscoverSection() {
           </div>
         </div>
 
-        <div className="movie-wrapper grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full mt-10">
-          {searchResult && searchResult.results.length === 0 && (
-            <div className="notfound">
-              <h1>Search Not Found</h1>
-            </div>
-          )}
+        {searchResult && searchResult.results.length === 0 && (
+          <div className="notfound">
+            <h1
+              className="text-xl font-bold text-text_primary text-center mt-5
+          dark:text-text_primary_dark"
+            >
+              Search Results Not Found
+            </h1>
+          </div>
+        )}
 
+        <div className="movie-wrapper grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full mt-10">
           {query.has('genres')
             ? searchResult &&
               searchResult.results.map((result) => (
