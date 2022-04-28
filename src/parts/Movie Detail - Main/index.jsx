@@ -122,10 +122,10 @@ export default function MovieDetailMain() {
               <div className="background-overlay " />
             </div>
 
-            <div className="movie-details-wrap  flex items-end  w-full relative">
+            <div className="movie-details-wrap flex lg:items-end items-center  flex-col lg:flex-row  w-full relative">
               {/* Poster Image Section */}
 
-              <div className="movie-details-image mr-10 relative ">
+              <div className="movie-details-image lg:mr-10 relative ">
                 <div className="movie-details-image-wrapper">
                   <img
                     src={`${IMAGE_BASE_URL}${detail.poster_path}`}
@@ -163,11 +163,11 @@ export default function MovieDetailMain() {
               </div>
 
               {/* Content Movie Details */}
-              <div className="movie-details-content">
+              <div className="movie-details-content mt-10 lg:mt-0">
                 <div className="movie-details-content-wrap">
                   <div className="movie-details-content-header">
                     {mediaType === 'movie' ? (
-                      <h1 className="text-4xl font-bold text-dark drop-shadow-lg dark:text-text_primary_dark">
+                      <h1 className="text-4xl font-bold text-dark drop-shadow-lg text-center lg:text-left dark:text-text_primary_dark">
                         {`${title} (${detail.release_date.split('-')[0]})`}
                       </h1>
                     ) : (
@@ -184,11 +184,11 @@ export default function MovieDetailMain() {
                     )}
                   </div>
 
-                  <div className="movie-details-content-genres mt-5">
+                  <div className="movie-details-content-genres mt-5 w-full flex flex-wrap items-center justify-center lg:block ">
                     {detail.genres.map((genre, index) => (
                       <Button
                         type="link"
-                        className="genre-button px-3 py-2 mr-2 rounded-xl shadow-lg text-base font-medium  border-2   bg-transparent border-slate-800 
+                        className="genre-button px-3 py-2 mr-2 rounded-xl shadow-lg text-base font-medium  border-2   bg-transparent border-slate-800 w-max mb-3
                        text-dark hover:bg-slate-100 hover:bg-opacity-60 
 
                     dark:border-slate-200 dark:text-text_primary_dark dark:hover:bg-dark dark:hover:bg-opacity-70 dark:hover:border-slate-100 dark:active:border-slate-300
@@ -202,7 +202,7 @@ export default function MovieDetailMain() {
                     ))}
                   </div>
 
-                  <div className="movie-details-content-link mt-6 flex items-center">
+                  <div className="movie-details-content-link mt-3 lg:mt-6 flex items-center justify-center lg:justify-start">
                     <Button
                       type="link"
                       isExternal

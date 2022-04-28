@@ -52,8 +52,8 @@ export default function Header(props) {
           <div
             ref={navMenu}
             className="
-          
-          hidden absolute py-5 dark:bg-slate-600 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none
+          nav-section
+          hidden absolute py-5 lg:py-0 dark:bg-slate-600 bg-white dark:lg:bg-transparent  shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none
           "
           >
             <div className="navigation-wrapper flex flex-col-reverse lg:items-center lg:justify-end lg:flex-row ">

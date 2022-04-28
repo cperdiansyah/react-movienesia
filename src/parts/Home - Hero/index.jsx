@@ -25,7 +25,7 @@ export default function Hero() {
               href="discover"
               className="px-3 py-4 rounded-md shadow-lg text-lg font-semibold 
               bg-primary text-white hover:bg-indigo-400 active:bg-indigo-600
-              dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-100 dark:active:bg-slate-300 mx-auto block w-fit"
+              dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-100 dark:active:bg-slate-300 mx-auto block w-fit lg:mx-0"
             >
               Discover Now
             </Button>

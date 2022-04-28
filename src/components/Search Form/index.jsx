@@ -11,14 +11,14 @@ export default function SearchForm(props) {
     (e) => {
       e.preventDefault();
       setSearch(e.target.value);
-      console.log(e.target.value);
+      // console.log(e.target.value);
     },
     [search]
   );
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(search);
+    // console.log(search);
     navigate(`/discover/?search=${search}`);
     setSearch('');
   };

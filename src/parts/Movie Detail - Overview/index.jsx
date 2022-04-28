@@ -47,8 +47,8 @@ export default function MovieDetailOverview() {
     <section className="overview-section py-12 mt-5">
       {detail && (
         <div className="container">
-          <div className="content-wrapper flex">
-            <div className="movie-details-content-overview  w-2/3">
+          <div className="content-wrapper flex flex-col lg:flex-row">
+            <div className="movie-details-content-overview  w-full lg:w-2/3">
               <div className="overview-wrapper">
                 <h2 className="text-2xl font-bold  text-dark drop-shadow-md dark:text-text_primary_dark">
                   Synopsis
@@ -70,7 +70,7 @@ export default function MovieDetailOverview() {
                       {backdrops &&
                         backdrops.slice(0, 6).map((backdrop, index) => (
                           <div
-                            className="backdrop-wrapper md:w-1/3 p-2"
+                            className="backdrop-wrapper w-1/2 md:w-1/3 p-2"
                             key={index}
                           >
                             <div className="backdrop-item ">
@@ -101,7 +101,7 @@ export default function MovieDetailOverview() {
                       {posters &&
                         posters.slice(0, 8).map((posters, index) => (
                           <div
-                            className="posters-wrapper md:w-1/4 p-2"
+                            className="posters-wrapper  w-1/2 md:w-1/4 p-2"
                             key={index}
                           >
                             <div className="posters-item ">
@@ -131,7 +131,7 @@ export default function MovieDetailOverview() {
               </div>
             </div>
 
-            <div className="w-1/3">
+            <div className="w-full mt-10 lg:mt-0 lg:w-1/3">
               <div className="cast-wrapper">
                 <h2 className="text-2xl font-semibold dark:text-text_primary_dark ">
                   Cast
@@ -192,7 +192,7 @@ export default function MovieDetailOverview() {
               <h2 className="text-2xl font-bold text-dark drop-shadow-md dark:text-text_primary_dark ">
                 Recommendations Movie
               </h2>
-              <div className="movie-wrapper grid grid-cols-6 gap-4 w-full mt-4">
+              <div className="movie-wrapper grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full mt-4">
                 {recommendations.results.slice(0, 6).map((movie) => (
                   <CardMovie
                     key={movie.id}

@@ -154,7 +154,7 @@ export default function HeroCategories() {
         </div>
         <div
           className="categories-wrapper w-full mt-10 
-          grid grid-cols-2 gap-5 md:grid-cols-3
+          grid grid-cols-2 gap-5 md:grid-cols-4
          lg:grid-cols-4 "
         >
           {categories

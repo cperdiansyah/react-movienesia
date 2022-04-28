@@ -31,6 +31,7 @@ export default function CardMovie({ movie, className, type }) {
             decoding="async"
           />
         </div>
+
         <div className="content-wrapper px-1">
           <div className="info-wrapper my-3 flex justify-between items-center">
             <div className="rate-wrapper flex items-center border border-yellow-400 bg-yellow-50  py-1 px-2 pr-3 rounded-lg ">
@@ -42,12 +43,12 @@ export default function CardMovie({ movie, className, type }) {
               </span>
             </div>
 
-            <span className="text-sm text-text_secondary">
+            <span className="text-sm text-right md:text-left text-text_secondary">
               <Moment format="MMM DD, YYYY">{movie.release_date}</Moment>
             </span>
           </div>
 
-          <h2 className="title text-lg font-semibold">
+          <h2 className="title text-base md:text-lg font-semibold">
             {title}
             <span className="year">
               {' '}

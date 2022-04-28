@@ -165,7 +165,7 @@ export default function HeroMovies() {
           </div>
         </div>
 
-        <div className="movie-wrapper grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full mt-10">
+        <div className="movie-wrapper grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full mt-10">
           {movies.map((movie) => (
             <CardMovie
               key={movie.id}

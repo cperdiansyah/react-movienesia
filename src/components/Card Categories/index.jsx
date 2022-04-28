@@ -13,7 +13,7 @@ export default function CardCategory({ category }) {
       </div>
 
       <div className="categories-content-wrapper  md:w-2/3 md:ml-5">
-        <h3 className="categories-content-wrapper__title text-text_primary font-bold text-lg text-center mt-3">
+        <h3 className="categories-content-wrapper__title text-text_primary font-bold text-lg text-center lg:text-left mt-3">
           {category.name}
         </h3>
         <p className="categories-content-wrapper__total leading-loose text-base">
@@ -23,7 +23,7 @@ export default function CardCategory({ category }) {
         <Button
           type="link"
           href={`/discover/categories/${category.name}?genres=${category.id}`}
-          className="underline text-base text-text_primary text-center block "
+          className="underline text-base text-text_primary text-center block lg:text-left "
         >
           View More
         </Button>

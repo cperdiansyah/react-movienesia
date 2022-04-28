@@ -11,7 +11,6 @@ const { BASE_URL, API_KEY } = apiConfig;
 export default function DiscoverSection() {
   const { pathname } = useLocation();
   const [searchResult, setSearchResult] = useState('');
-  console.log(pathname.split('/'));
   const query = useQuery();
   const search = query.get('search') || query.get('genres');
 
@@ -33,7 +32,7 @@ export default function DiscoverSection() {
     }
   }, [pathname, search]);
 
-  console.log(searchResult);
+  // console.log(searchResult.results.length);
 
   return (
     <section className="py-36">
@@ -49,7 +48,7 @@ export default function DiscoverSection() {
             </h3>
           </div>
         </div>
-        <div className="search-content mt-9 w-1/2 mx-auto">
+        <div className="search-content mt-9 md:w-1/2 mx-auto">
           <div className="search-wrapper">
             <SearchForm isFull />
             {search && (
@@ -67,14 +66,20 @@ export default function DiscoverSection() {
           </div>
         </div>
 
-        <div className="movie-wrapper grid grid-cols-6 gap-4 w-full mt-10">
+        <div className="movie-wrapper grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full mt-10">
+          {searchResult && searchResult.results.length === 0 && (
+            <div className="notfound">
+              <h1>Search Not Found</h1>
+            </div>
+          )}
+
           {query.has('genres')
             ? searchResult &&
               searchResult.results.map((result) => (
                 <CardMovie
                   key={result.id}
                   movie={result}
-                  type={result.media_type}
+                  type={query.has('genres') ? 'movie' : result.media_type}
                   className="w-full"
                 />
               ))
