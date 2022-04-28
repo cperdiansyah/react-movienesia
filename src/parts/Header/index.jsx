@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import Brand from '../../components/Brand';
 import SearchForm from '../../components/Search Form';
